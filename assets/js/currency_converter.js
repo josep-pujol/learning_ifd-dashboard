@@ -1,13 +1,13 @@
 
 const baseURL = "https://api.ratesapi.io/api/"
-var base_cur;
-var conv_cur;
+var base_cur = "EUR";
+var conv_cur = "USD";
 var param_latest = `latest?base=${base_cur}&symbols=${conv_cur}`;
 
 
 function getData(url_param, cb) {
     var xhr = new XMLHttpRequest();
-    var url = baseURL; // + url_param + "?" + currencies;
+    var url = baseURL + url_param;
     console.log(url);
     xhr.open("GET", url);
     xhr.send();
@@ -30,22 +30,19 @@ function writeToDocument(url_param) {
         console.log('data.rates', data.rates);
         data = data.rates;
 
-        for (var key in data) {
-            if (data.hasOwnProperty(key)) {
-                console.log(key + ": " + data[key]);
-                doc_data += "<p>" + key + ": " + data[key] + "</p>";
-            }
-        }
 
+        var amountConvert = document.getElementById("amount").value;
+        var fromCurrency = document.getElementById("from-currency").value;
+        var toCurrency = document.getElementById("to-currency").value;
+        console.log('form data', amountConvert, fromCurrency, toCurrency);
 
-        console.log('doc_data', doc_data);
-
+        var convertedCurrency = amountConvert * data[toCurrency];
         var el = document.getElementById("converted-currency");
-        el.innerHTML = ""
-        el.innerHTML = doc_data;
+        el.innerHTML = "";
+        el.innerHTML = `<p>${convertedCurrency}</p>`;
 
     });
 }
 
-var url_param = "";
-writeToDocument(url_param)
+
+writeToDocument(param_latest)
