@@ -40,7 +40,7 @@ function writeToDocument(url_param) {
 
         console.log('doc_data', doc_data);
 
-        var el = document.getElementById("currency-converter");
+        var el = document.getElementById("converted-currency");
         el.innerHTML = ""
         el.innerHTML = doc_data;
 
