@@ -1,8 +1,19 @@
-
-// const baseURL = "https://api.exchangerate-api.com/v4/latest/EUR"
-const baseURL = "https://api.ratesapi.io/api/"
+const baseURL = "https://api.exchangeratesapi.io/"
 const param_latest = "latest?base=EUR&symbols=USD,GBP,JPY,CAD,AUD"
-var query_date = "2019-05-05";  // cannot get after 2019-05-03
+
+
+function formatDate(dateToFormat) {
+    var dd = dateToFormat.getDate();
+    var mm = dateToFormat.getMonth()+1; 
+    var yyyy = dateToFormat.getFullYear();
+    if(dd<10) { dd='0'+dd;} 
+    if(mm<10) { mm='0'+mm;}
+    return `${yyyy}-${mm}-${dd}`;
+}
+
+var today = new Date();
+var yesterday = new Date(today - 24*60*60*1000);
+var query_date = formatDate(yesterday);
 var param_hist = `${query_date}?base=EUR&symbols=USD,GBP,JPY,CAD,AUD`;
 
 

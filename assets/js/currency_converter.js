@@ -1,5 +1,4 @@
-const baseURL = "https://api.ratesapi.io/api/"
-
+const baseURL = "https://api.exchangeratesapi.io/"
 
 function getData(url_param, cb) {
     var xhr = new XMLHttpRequest();
@@ -36,6 +35,7 @@ function writeToDocument(url_param) {
         el.innerHTML = `<p>${amountToConvert*1}</p>`;
         
     } else {
+        
         var param_latest = `latest?base=${fromCurrency}&symbols=${toCurrency}`;
         
         getData(param_latest, function(data) {
