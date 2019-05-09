@@ -19,10 +19,18 @@ function getData(url_param, cb) {
 
 function writeToDocument(url_param) {
     
-    var amountToConvert = document.getElementById("amount").value;
+    var amountToConvert = document.getElementById("amount").value.replace(/,/g, '.');
     var fromCurrency = document.getElementById("from-currency").value;
     var toCurrency = document.getElementById("to-currency").value;
     console.log('Data from Form: ', amountToConvert, fromCurrency, toCurrency);
+    
+    if (isNaN(amountToConvert)) {
+        var el = document.getElementById("converted-currency");
+        el.innerHTML = "";
+        el.innerHTML = "<p>The value added in the box is not a valid number</p>";
+        return el.innerHTML;
+    }
+    
     
     var param_latest = `latest?base=${fromCurrency}&symbols=${toCurrency}`;
     
