@@ -42,6 +42,9 @@ function writeToDocument() {
                                 console.dir(data);
                                 data_hist = data.rates;
 
+// https://observablehq.com/@d3/multi-line-chart
+
+
         var el = document.getElementById("hist-chart");
         el.innerHTML = ""
         el.innerHTML = data_hist;
