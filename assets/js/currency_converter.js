@@ -1,5 +1,6 @@
 const baseURL = "https://api.exchangeratesapi.io/"
 
+
 function getData(url_param, cb) {
     var xhr = new XMLHttpRequest();
     var url = baseURL + url_param;

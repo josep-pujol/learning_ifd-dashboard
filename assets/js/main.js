@@ -13,8 +13,8 @@ function formatDate(dateToFormat) {
 
 var today = new Date();
 var yesterday = new Date(today - 24*60*60*1000);
-var query_date = formatDate(yesterday);
-var param_hist = `${query_date}?base=EUR&symbols=USD,GBP,JPY,CAD,AUD`;
+var queryDate = formatDate(yesterday);
+var param_hist = `${queryDate}?base=EUR&symbols=USD,GBP,JPY,CAD,AUD`;
 
 
 function getData(url_param, cb) {
