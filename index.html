@@ -10,8 +10,44 @@
 </head>
 
 <body>
-    <div id="testAPI"></div>
-    <div id="currency-converter"></div>
+    
+    <div class="latest-rates">
+        <div id="latest_rates"></div>
+    </div>
+
+    <div class="currency-converter">
+        <form>
+            <div class="form-row">
+                <div class="">
+                    <input type="text" class="form-control" id="amount" placeholder="Amount">
+                </div>
+                <div class="">
+                    <select class="custom-select" id="from-currency">
+                  <option value="EUR" selected>EUR</option>
+                  <option value="USD">USD</option>
+                  <option value="GBP">GBP</option>
+                  <option value="JPY">JPY</option>
+                </select>
+                </div>
+                <div class="">
+                    <div>From / To</div>
+                </div>
+                <div class="">
+                    <select class="custom-select" id="to-currency">
+                  <option value="USD" selected>USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                  <option value="JPY">JPY</option>
+                </select>
+                </div>
+                <div class="">
+                    <button type="button" class="btn" id="convert" onclick="writeToDocument()">Execute</button>
+                </div>
+            </div>
+        </form>
+        <div id="converted-currency"></div>
+    </div>
+    
 </body>
 
 </html>
