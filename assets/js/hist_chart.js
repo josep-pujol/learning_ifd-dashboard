@@ -236,12 +236,12 @@ function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         for (var y  in yObjs) {
             yObjs[y].tooltip = focus.append("g");
             yObjs[y].tooltip.append("circle").attr("r", 2);
-            yObjs[y].tooltip.append("rect").attr("x", 7).attr("y","-17").attr("width",38).attr("height",'0.8em');
+            yObjs[y].tooltip.append("rect").attr("x", 7).attr("y","-17").attr("width", 75).attr("height",'0.8em');
             yObjs[y].tooltip.append("text").attr("x", 9).attr("y","-10").attr("dy", ".35em");
         }
 
-        // Year label
-        focus.append("text").attr("class", "focus year").attr("x", 9).attr("y", 7);
+        // Date label
+        focus.append("text").attr("class", "focus date_").attr("x", 9).attr("y", 7);
         // Focus line
         focus.append("line").attr("class", "focus line").attr("y1", 0).attr("y2", chartObj.height);
 
@@ -255,7 +255,10 @@ function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         }
 
         // Overlay to capture hover
-        chartObj.svg.append("rect").attr("class", "overlay").attr("width", chartObj.width).attr("height", chartObj.height).on("mouseover", function () {
+        chartObj.svg.append("rect"
+                            ).attr("class", "overlay"
+                            ).attr("width", chartObj.width
+                            ).attr("height", chartObj.height).on("mouseover", function () {
             focus.style("display", null);
         }).on("mouseout", function () {
             focus.style("display", "none");
@@ -271,12 +274,12 @@ function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             minY = chartObj.height;
             for (var y  in yObjs) {
                 yObjs[y].tooltip.attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(d)) + "," + chartObj.yScale(yObjs[y].yFunct(d)) + ")");
-                yObjs[y].tooltip.select("text").text(chartObj.yFormatter(yObjs[y].yFunct(d)));
+                yObjs[y].tooltip.select("text").text(y + " " + chartObj.yFormatter(yObjs[y].yFunct(d)));
                 minY = Math.min(minY, chartObj.yScale(yObjs[y].yFunct(d)));
             }
 
             focus.select(".focus.line").attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(d)) + ")").attr("y1", minY);
-            focus.select(".focus.year").text("Date: " + chartObj.xFormatter(chartObj.xFunct(d)));
+            focus.select(".focus.date_").text("Date: " + chartObj.xFormatter(chartObj.xFunct(d)));
         }
 
     };

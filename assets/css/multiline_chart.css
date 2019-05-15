@@ -98,8 +98,8 @@
 }
 
 .chart-wrapper .focus rect {
-    fill: white;
-    opacity: 0.6;
+    fill: steelblue;
+    opacity: 0.1;
     border-radius: 2px;
 }
 
