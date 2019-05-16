@@ -12,19 +12,18 @@ var queryDate = formatDate(yesterday);
 var param_hist = `${queryDate}?base=EUR&symbols=USD,GBP,JPY,CAD,AUD`;
 
 
-
 function writeToDocument() {
     var doc_data = "";
     var data_latest;
     var data_hist;
     
-    getData(param_latest, function(data) {
+    getData(baseURL + param_latest, function(data) {
                             console.log('data_latest');
                             console.dir(data);
                             data_latest = data.rates;
                           
                         
-        getData(param_hist, function(data) {
+        getData(baseURL + param_hist, function(data) {
                                 console.log('data_hist');
                                 console.dir(data);
                                 data_hist = data.rates;
