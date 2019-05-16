@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/multiline_chart.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://d3js.org/d3-time.v1.min.js"></script>
+    <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
     <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/currency_converter.js"></script>
 </head>
 
 <body>
-    
+
     <div class="latest-rates">
         <div id="latest_rates"></div>
     </div>
@@ -47,7 +52,13 @@
         </form>
         <div id="converted-currency"></div>
     </div>
+
+    <div class="chart">
+        <div class="chart-wrapper" id="hist-chart"></div>
+    </div>
     
+    
+    <script type="module" src="assets/js/hist_chart.js"></script>
 </body>
 
 </html>

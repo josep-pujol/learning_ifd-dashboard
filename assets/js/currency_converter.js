@@ -1,8 +1,8 @@
 import { getData } from '/assets/js/utils.js';
 
 
-export function runCurrencyConverter() {
-    
+function runCurrencyConverter() {
+    console.log('START runCurrencyConverter');
     var el = document.getElementById("converted-currency");
     el.innerHTML = "";
     
@@ -36,5 +36,4 @@ export function runCurrencyConverter() {
         
     }
 }
-
 
