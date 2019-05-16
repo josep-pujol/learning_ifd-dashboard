@@ -2,9 +2,8 @@
 import { makeMultiLineChart } from '/assets/js/makeMultiLineChart.js';
 
 
-const baseURL = "https://api.exchangeratesapi.io/"
-var doc_data = "";
-var data_hist_chart; 
+const baseURL = "https://api.exchangeratesapi.io/";
+
 
 function formatDate(dateToFormat) {
     var dd = dateToFormat.getDate();
