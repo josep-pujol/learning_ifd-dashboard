@@ -3,7 +3,6 @@ import { formatDate, getData } from '/assets/js/utils.js';
 
 
 // Define const and variables
-const baseURL = "https://api.exchangeratesapi.io/"
 const param_latest = "latest?base=EUR&symbols=USD,GBP,JPY,CAD,AUD"
 
 var today = new Date();
@@ -12,18 +11,18 @@ var queryDate = formatDate(yesterday);
 var param_hist = `${queryDate}?base=EUR&symbols=USD,GBP,JPY,CAD,AUD`;
 
 
-function writeToDocument() {
+function getLatestRates() {
     var doc_data = "";
     var data_latest;
     var data_hist;
     
-    getData(baseURL + param_latest, function(data) {
+    getData(param_latest, function(data) {
                             console.log('data_latest');
                             console.dir(data);
                             data_latest = data.rates;
                           
                         
-        getData(baseURL + param_hist, function(data) {
+        getData(param_hist, function(data) {
                                 console.log('data_hist');
                                 console.dir(data);
                                 data_hist = data.rates;
@@ -61,4 +60,4 @@ function writeToDocument() {
     });
 };
 
-writeToDocument();
+getLatestRates();

@@ -1,3 +1,5 @@
+const baseURL = "https://api.exchangeratesapi.io/"
+
 
 export function formatDate(dateToFormat) {
     var dd = dateToFormat.getDate();
@@ -11,8 +13,9 @@ export function formatDate(dateToFormat) {
 }
 
 
-export function getData(url, cb) {
+export function getData(url_param, cb) {
     var xhr = new XMLHttpRequest();
+    var url = baseURL + url_param;
     console.log(url);
     
     xhr.open("GET", url);

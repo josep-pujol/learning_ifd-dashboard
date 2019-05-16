@@ -1,22 +1,7 @@
-const baseURL = "https://api.exchangeratesapi.io/"
+import { getData } from '/assets/js/utils.js';
 
 
-function getData(url_param, cb) {
-    var xhr = new XMLHttpRequest();
-    var url = baseURL + url_param;
-    console.log(url);
-    xhr.open("GET", url);
-    xhr.send();
-
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            cb(JSON.parse(this.responseText));
-        }
-    };
-}
-
-
-function writeToDocument(url_param) {
+export function runCurrencyConverter() {
     
     var el = document.getElementById("converted-currency");
     el.innerHTML = "";
