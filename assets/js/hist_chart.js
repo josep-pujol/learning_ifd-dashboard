@@ -3,7 +3,7 @@ import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 
 
 const baseURL = "https://api.exchangeratesapi.io/";
-
+const currencies = "USD,GBP,CHF,CAD,AUD,NZD"
 
 function formatDate(dateToFormat) {
     var dd = dateToFormat.getDate();
@@ -19,7 +19,7 @@ var yesterday = new Date(today - 2*24*60*60*1000);
 var thirtyDaysBack = new Date(today - 90 * 24*60*60*1000);
 var fromDate = formatDate(thirtyDaysBack);
 var toDate = formatDate(yesterday);
-var param_hist_period = `history?start_at=${fromDate}&end_at=${toDate}&symbols=USD,GBP,JPY,CAD,AUD`;
+var param_hist_period = `history?start_at=${fromDate}&end_at=${toDate}&symbols=` + currencies;
 // https://api.exchangeratesapi.io/history?start_at=2019-04-01&end_at=2019-05-10&symbols=USD,GBP,JPY,CAD,AUD
 
 
@@ -50,9 +50,10 @@ function writeToDocument() {
             data_obj.push({ 'date': date_parser(row), 
                             'EUR_USD': parseFloat(data[row]['USD']),
                             'EUR_GBP': parseFloat(data[row]['GBP']),
+                            'EUR_CHF': parseFloat(data[row]['CHF']), 
                             'EUR_CAD': parseFloat(data[row]['CAD']), 
-                            'EUR_AUD': parseFloat(data[row]['AUD']) 
-                           // 'EUR_JPY': parseFloat(data[row]['JPY']) 
+                            'EUR_AUD': parseFloat(data[row]['AUD']),
+                            'EUR_NZD': parseFloat(data[row]['NZD'])
                             })
         }
         
@@ -64,9 +65,10 @@ function writeToDocument() {
         {
             'USD': {column: 'EUR_USD'},
             'GBP': {column: 'EUR_GBP'},
+            'CHF': {column: 'EUR_CHF'},
             'CAD': {column: 'EUR_CAD'},
-            'AUD': {column: 'EUR_AUD'}
-           // 'JPY': {column: 'EUR_JPY'}
+            'AUD': {column: 'EUR_AUD'},
+            'NZD': {column: 'EUR_NZD'}
         }, 
         {xAxis: 'Date', yAxis: 'Exchange Rate'});
         console.dir(chartObj)
