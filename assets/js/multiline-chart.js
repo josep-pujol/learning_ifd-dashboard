@@ -14,7 +14,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
     chartObj.data = dataset;
     console.log('dataset chart.Obj.data', chartObj.data);
-    chartObj.margin = {top: 20, right: 45, bottom: 45, left: 85};
+    chartObj.margin = {top: 25, right: 45, bottom: 45, left: 80};
     chartObj.width = 650 - chartObj.margin.left - chartObj.margin.right;
     chartObj.height = 480 - chartObj.margin.top - chartObj.margin.bottom;
 

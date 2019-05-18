@@ -44,7 +44,7 @@ function getLatestRates() {
             for (var key in data_latest) {
                 var trend;
                 if (data_latest.hasOwnProperty(key)) {
-                    console.log(key + ": " + data_latest[key]);
+                    console.log(key + ":  " + data_latest[key]);
                     
                     if (data_latest[key] - data_hist[key] > 0) {
                         trend = "^";
@@ -55,7 +55,7 @@ function getLatestRates() {
                     }
                     
                     
-                    doc_data += `<p>EUR / ${key} :  ${data_latest[key]}    ${trend} </p>`;
+                    doc_data += `<p>EUR / ${key}    ${data_latest[key]}    ${trend} </p>`;
                 }
             }
         

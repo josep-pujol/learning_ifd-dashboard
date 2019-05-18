@@ -5,7 +5,7 @@
     max-width: 950px;
     min-width: 304px;
     margin: 0 auto;
-    background-color: #FAF7F7;
+    background-color: white; /* original color #FAF7F7 */
 }
 
 .chart-wrapper .inner-wrapper {
