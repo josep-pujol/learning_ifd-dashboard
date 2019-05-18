@@ -2,8 +2,8 @@
 
 
 .chart-wrapper {
-    max-width: 950px;
-    min-width: 304px;
+    max-width: 1150px;
+    min-width: 350px;
     margin: 0 auto;
     background-color: white; /* original color #FAF7F7 */
 }
@@ -60,7 +60,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     font-size: 16px;
-    padding: 10px 40px;
+    padding: 10px 50px;
 }
 
 .chart-wrapper .legend > div {
@@ -98,7 +98,7 @@
 }
 
 .chart-wrapper .focus rect {
-    fill: steelblue;
+    fill: white;
     opacity: 0.1;
     border-radius: 2px;
 }

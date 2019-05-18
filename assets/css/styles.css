@@ -1,0 +1,17 @@
+
+.table{
+    width: 215px;
+}  
+
+.table, th, td {
+    border-spacing: 1px;  
+    line-height: 0.9;
+}
+
+th {
+    text-align: left;
+}
+
+td {
+    text-align: right;
+}

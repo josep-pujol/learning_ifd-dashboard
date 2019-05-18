@@ -28,7 +28,10 @@ function runCurrencyConverter() {
     console.log('Data from Form: ', amountToConvert, fromCurrency, toCurrency);
     
     if (isNaN(amountToConvert)) {
-        el.innerHTML = "<p>The value added in the box is not a valid number</p>";
+        el.innerHTML = `<div class="alert alert-dismissible alert-warning mx-md-5 mt-3">
+                          <h5 class="alert-heading">Warning!</h5>
+                          <p class="mb-0">The amount is not valid!</p>
+                        </div>`;
         return el.innerHTML;
     }
 

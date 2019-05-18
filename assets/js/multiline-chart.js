@@ -14,7 +14,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
     chartObj.data = dataset;
     console.log('dataset chart.Obj.data', chartObj.data);
-    chartObj.margin = {top: 25, right: 45, bottom: 45, left: 80};
+    chartObj.margin = {top: 25, right: 75, bottom: 45, left: 90};
     chartObj.width = 650 - chartObj.margin.left - chartObj.margin.right;
     chartObj.height = 480 - chartObj.margin.top - chartObj.margin.bottom;
 
@@ -175,16 +175,18 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
                                         ).append("text"
                                             ).attr("class", "label"
                                             ).attr("x", chartObj.width / 2
-                                            ).attr("y", 37).style("text-anchor", "middle").text(chartObj.xAxisLabel);
+                                            ).attr("y", 45).style("text-anchor", "middle"
+                                                          ).style("font-size", "0.9em").text(chartObj.xAxisLabel);
 
         chartObj.svg.append("g").attr("class", "y axis"
                                         ).call(chartObj.yAxis
                                             ).append("text"
                                             ).attr("class", "label"
                                             ).attr("transform", "rotate(-90)"
-                                            ).attr("y", -62
+                                            ).attr("y", -72
                                             ).attr("x", -chartObj.height / 2
-                                            ).attr("dy", ".71em").style("text-anchor", "middle").text(chartObj.yAxisLabel);
+                                            ).attr("dy", ".71em").style("text-anchor", "middle"
+                                                                ).style("font-size", "0.9em").text(chartObj.yAxisLabel);
 
         //Draw tooltips
         var focus = chartObj.svg.append("g").attr("class", "focus").style("display", "none");
@@ -196,8 +198,8 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             yObjs[y].tooltip.append("text").attr("x", 9).attr("y","-10").attr("dy", ".35em");
         }
 
-        // Year label
-        focus.append("text").attr("class", "focus year").attr("x", 9).attr("y", 7);
+        // Date label
+        focus.append("text").attr("class", "focus date").attr("x", 9).attr("y", 7);
         // Focus line
         focus.append("line").attr("class", "focus line").attr("y1", 0).attr("y2", chartObj.height);
 
@@ -227,12 +229,12 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             var minY = chartObj.height;
             for (var y  in yObjs) {
                 yObjs[y].tooltip.attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(d)) + "," + chartObj.yScale(yObjs[y].yFunct(d)) + ")");
-                yObjs[y].tooltip.select("text").text(chartObj.yFormatter(yObjs[y].yFunct(d)));
+                yObjs[y].tooltip.select("text").text(y + " " + chartObj.yFormatter(yObjs[y].yFunct(d)));
                 minY = Math.min(minY, chartObj.yScale(yObjs[y].yFunct(d)));
             }
 
             focus.select(".focus.line").attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(d)) + ")").attr("y1", minY);
-            focus.select(".focus.year").text("Date: " + chartObj.xFormatter(chartObj.xFunct(d)));
+            focus.select(".focus.date").text("Date: " + chartObj.xFormatter(chartObj.xFunct(d)));
         }
 
     };

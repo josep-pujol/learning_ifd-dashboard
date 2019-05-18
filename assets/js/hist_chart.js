@@ -15,7 +15,7 @@ function formatDate(dateToFormat) {
 }
 
 var today = new Date();
-var yesterday = new Date(today - 24*60*60*1000);
+var yesterday = new Date(today - 2*24*60*60*1000);
 var thirtyDaysBack = new Date(today - 90 * 24*60*60*1000);
 var fromDate = formatDate(thirtyDaysBack);
 var toDate = formatDate(yesterday);

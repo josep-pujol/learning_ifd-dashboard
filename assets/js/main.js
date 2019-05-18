@@ -47,17 +47,17 @@ function getLatestRates() {
                     console.log(key + ":  " + data_latest[key]);
                     
                     if (data_latest[key] - data_hist[key] > 0) {
-                        trend = "^";
+                        trend = `<span style="font-size: 1.3em; color: green;"><i class="fa fa-caret-up"></i></span>`;
                     } else if (data_latest[key] - data_hist[key] < 0) {
-                        trend = "v";
+                        trend = `<span style="font-size: 1.3em; color: red;"><i class="fa fa-caret-down"></i></span>`;
                     } else {
-                        trend = "-";
+                        trend = `<span style="font-size: 1.3em; color: black;">=</span>`;
                     }
-                    
-                    
-                    doc_data += `<p>EUR / ${key}    ${data_latest[key]}    ${trend} </p>`;
+
+                    doc_data += `<tr class="p-0"><th scope="row">EUR / ${key}</th><td>${data_latest[key]}</td><td>${trend}</td></tr>`;
                 }
             }
+
         
             console.log('doc_data', doc_data);
         
