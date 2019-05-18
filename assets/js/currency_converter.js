@@ -1,5 +1,21 @@
-import { getData } from '/assets/js/utils.js';
+// import { getData } from '/assets/js/utils.js';
+const baseURL = "https://api.exchangeratesapi.io/";
 
+function getData(url_param, cb) {
+    var xhr = new XMLHttpRequest();
+    var url = baseURL + url_param;
+    console.log(url);
+    
+    xhr.open("GET", url);
+    xhr.send();
+
+    xhr.onreadystatechange = function() {
+        console.log(this.readyState);
+        if (this.readyState == 4 && this.status == 200) {
+            cb(JSON.parse(this.responseText));
+        }
+    };
+}
 
 function runCurrencyConverter() {
     console.log('START runCurrencyConverter');

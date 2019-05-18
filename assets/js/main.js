@@ -1,6 +1,7 @@
 // Imports
 import { formatDate, getData } from '/assets/js/utils.js';
 import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
+// import { runCurrencyConverter } from '/assets/js/currency_converter.js';
 
 
 // Define const and variables

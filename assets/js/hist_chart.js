@@ -1,5 +1,5 @@
 
-import { makeMultiLineChart } from '/assets/js/makeMultiLineChart.js';
+import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 
 
 const baseURL = "https://api.exchangeratesapi.io/";
