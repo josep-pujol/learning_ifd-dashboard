@@ -3,7 +3,7 @@ import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 
 
 const baseURL = "https://api.exchangeratesapi.io/";
-const currencies = "USD,GBP,CAD,AUD,NZD"
+const currencies = "USD,GBP,CAD,AUD,NZD";
 
 function formatDate(dateToFormat) {
     var dd = dateToFormat.getDate();
@@ -54,11 +54,11 @@ function writeToDocument() {
                             'EUR_CAD': parseFloat(data[row]['CAD']), 
                             'EUR_AUD': parseFloat(data[row]['AUD']),
                             'EUR_NZD': parseFloat(data[row]['NZD'])
-                            })
+                            });
         }
         
         console.log(data_obj);
-        data_obj.sort(function(a, b){return a.date - b.date});
+        data_obj.sort(function(a, b){return a.date - b.date;});
         console.log(data_obj);
         
         var chartObj = makeMultiLineChart(data_obj, 'date', 
@@ -71,13 +71,13 @@ function writeToDocument() {
             'NZD': {column: 'EUR_NZD'}
         }, 
         {xAxis: 'Date', yAxis: 'Exchange Rate'});
-        console.dir(chartObj)
-        console.log('before chartObj.bind("#hist-chart"); ')
+        console.dir(chartObj);
+        console.log('before chartObj.bind("#hist-chart"); ');
         chartObj.bind("#hist-chart");
         
-        console.log('before chartObj.render();')
+        console.log('before chartObj.render();');
         chartObj.render();
-        console.log('before return')
+        console.log('before return');
         return data_obj;
         
     });

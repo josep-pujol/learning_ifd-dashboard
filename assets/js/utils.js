@@ -1,4 +1,4 @@
-const baseURL = "https://api.exchangeratesapi.io/"
+const baseURL = "https://api.exchangeratesapi.io/";
 
 
 export function formatDate(dateToFormat) {

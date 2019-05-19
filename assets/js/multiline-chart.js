@@ -14,12 +14,12 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
     chartObj.data = dataset;
     console.log('dataset chart.Obj.data', chartObj.data);
-    chartObj.margin = {top: 25, right: 75, bottom: 45, left: 90};
+    chartObj.margin = {top: 25, right: 75, bottom: 45, left: 95};
     chartObj.width = 650 - chartObj.margin.left - chartObj.margin.right;
     chartObj.height = 480 - chartObj.margin.top - chartObj.margin.bottom;
 
 // So we can pass the x and y as strings when creating the function
-    chartObj.xFunct = function(d){return d[xName]};
+    chartObj.xFunct = function(d){return d[xName];};
 
 // For each yObjs argument, create a yFunction
     function getYFn(column) {
@@ -40,7 +40,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
     }
 
 //Formatter functions for the axes
-    chartObj.formatAsDate = d3.time.format("%d/%m/%Y");
+    chartObj.formatAsDate = d3.timeFormat("%d/%m/%Y");
     chartObj.formatAsNumber = d3.format(".0f");
     chartObj.formatAsDecimal = d3.format(".4f");
     chartObj.formatAsCurrency = d3.format("$.4f");
@@ -52,8 +52,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         }
         
     };
-
-    chartObj.xFormatter = chartObj.formatAsNumber;
+    chartObj.xFormatter = chartObj.formatAsDate;
     chartObj.yFormatter = chartObj.formatAsFloat;
 
     chartObj.bisectYear = d3.bisector(chartObj.xFunct).left; //< Can be overridden in definition
@@ -165,7 +164,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             }).on("mouseout", function () {
                 focus.transition().delay(700).style("display", "none");
             }).on("mousemove", mousemove);
-            console.log('yObjs[y].line', yObjs[y].line)
+            console.log('yObjs[y].line', yObjs[y].line);
         }
         
 

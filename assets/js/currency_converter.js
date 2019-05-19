@@ -17,6 +17,7 @@ function getData(url_param, cb) {
     };
 }
 
+
 function runCurrencyConverter() {
     console.log('START runCurrencyConverter');
     var el = document.getElementById("converted-currency");
@@ -37,20 +38,19 @@ function runCurrencyConverter() {
 
 
     if ( amountToConvert == 0 | fromCurrency == toCurrency ) {
-        el.innerHTML = `<p>${amountToConvert*1}</p>`;
+        el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(3)} ${fromCurrency}  =  <h5>${(amountToConvert*1).toFixed(4)} ${toCurrency}</h5></p>`;
         
     } else {
         
         var param_latest = `latest?base=${fromCurrency}&symbols=${toCurrency}`;
         
         getData(param_latest, function(data) {
-            var doc_data = "";
             console.dir(data);
             data = data.rates;
     
             var convertedCurrency = (amountToConvert * data[toCurrency]).toFixed(4);
             
-            el.innerHTML = `<p>${fromCurrency}${amountToConvert.toFixed(4)} = ${toCurrency}${convertedCurrency}</p>`;
+            el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(3)} ${fromCurrency}  =  <h5>${(convertedCurrency*1).toFixed(4)} ${toCurrency}</h5></p>`;
         });
         
     }

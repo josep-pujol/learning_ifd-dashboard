@@ -4,13 +4,12 @@ import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 // import { runCurrencyConverter } from '/assets/js/currency_converter.js';
 
 
-// Define const and variables
-const currencies = "USD,GBP,CAD,AUD,NZD"
+// Constants and variables
+const currencies = "USD,GBP,CAD,AUD,NZD";
 const param_latest = "latest?base=EUR&symbols=" + currencies;
-var doc_data = "";
 
 var today = new Date();
-var yesterday = new Date(today - 2*24*60*60*1000);
+var yesterday = new Date(today - 3*24*60*60*1000);
 var someDaysBack = new Date(today - 90 * 24*60*60*1000);
 var queryDate = formatDate(yesterday);
 var param_hist = `${queryDate}?base=EUR&symbols=` + currencies;
@@ -26,6 +25,7 @@ var param_hist_period = `history?start_at=${fromDate}&end_at=${toDate}&symbols=`
 function getLatestRates() {
     var data_latest;
     var data_hist;
+    var data_table;
     
     getData(param_latest, function(data) {
                             console.log('data_latest');
@@ -55,16 +55,16 @@ function getLatestRates() {
                         trend = `<span style="font-size: 1.3em; color: black;"><i class"fa">=</i></span>`;
                     }
 
-                    doc_data += `<tr><th scope="row">EUR / ${key}</th><td>${data_latest[key].toFixed(4)}</td><td>${trend}</td></tr>`;
+                    data_table += `<tr><th scope="row">EUR / ${key}</th><td>${data_latest[key].toFixed(4)}</td><td>${trend}</td></tr>`;
                 }
             }
 
         
-            console.log('doc_data', doc_data);
+            console.log('doc_data', data_table);
         
             var el = document.getElementById("latest_rates");
             el.innerHTML = "";
-            el.innerHTML = doc_data;
+            el.innerHTML = data_table;
 
         });
     
