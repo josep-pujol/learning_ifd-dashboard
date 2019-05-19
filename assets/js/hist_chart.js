@@ -3,7 +3,7 @@ import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 
 
 const baseURL = "https://api.exchangeratesapi.io/";
-const currencies = "USD,GBP,CHF,CAD,AUD,NZD"
+const currencies = "USD,GBP,CAD,AUD,NZD"
 
 function formatDate(dateToFormat) {
     var dd = dateToFormat.getDate();
@@ -50,7 +50,7 @@ function writeToDocument() {
             data_obj.push({ 'date': date_parser(row), 
                             'EUR_USD': parseFloat(data[row]['USD']),
                             'EUR_GBP': parseFloat(data[row]['GBP']),
-                            'EUR_CHF': parseFloat(data[row]['CHF']), 
+                            'EUR_SGD': parseFloat(data[row]['SGD']), 
                             'EUR_CAD': parseFloat(data[row]['CAD']), 
                             'EUR_AUD': parseFloat(data[row]['AUD']),
                             'EUR_NZD': parseFloat(data[row]['NZD'])
@@ -65,7 +65,7 @@ function writeToDocument() {
         {
             'USD': {column: 'EUR_USD'},
             'GBP': {column: 'EUR_GBP'},
-            'CHF': {column: 'EUR_CHF'},
+            'SGD': {column: 'EUR_SGD'},
             'CAD': {column: 'EUR_CAD'},
             'AUD': {column: 'EUR_AUD'},
             'NZD': {column: 'EUR_NZD'}

@@ -1,6 +1,10 @@
+.latest-rates, .currency-converter {
+    background-color: #F8F8F8;
+}
 
 .table{
     width: 215px;
+    margin: auto;
 }  
 
 .table, th, td {

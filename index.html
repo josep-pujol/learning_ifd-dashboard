@@ -32,51 +32,53 @@
                 <div class="row my-3">
                     <div class="col-xs-12 col-sm-12">
                         <div class="container">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <div class="latest-rates col-sm-12 col-md-4">
-                                    <div class="mx-2 my-2">
-                                        <h5>Latest Rates</h>
-                                    </div>
                                     <table class="table table-sm table-borderless table-hover">
-                                        <tbody id="latest_rates"></tbody>
+                                        <thead>
+                                            <tr><th scope="col" colspan="3"><h5>Latest Rates</h></th></tr>
+                                        </thead>
+                                            <tbody id="latest_rates"></tbody>
                                     </table>
                                 </div>
-                                
-                                <div class="currency-converter col-sm-12 col-md-8">
-                                    <div class="mx-2 my-2">
-                                        <h5>Currency Converter</h>
-                                    </div>
+                                <div class="spacing col-md-1"></div>
+                                <div class="currency-converter col-sm-12 col-md-7">
                                     <form>
-                                        <div class="form-row">
-                                            <div class="form-group mx-2 my-2">
+                                        <div class="form-row mx-auto col-12">
+                                            <div class="mx-2 my-auto">
+                                                <h5>Currency Converter</h>
+                                            </div>
+                                        </div>
+                                        <div class="form-row mx-auto col-12">
+                                            <div class="col-auto my-2">
                                                 <input type="text" class="form-control" id="amount" placeholder="Amount" aria-labelledby="amountToConvert">
                                             </div>
-                                            <div class="form-group mx-2 my-2">
+                                            <div class="col-auto my-2">
                                                 <select class="custom-select" id="from-currency">
                                                   <option value="EUR" selected>EUR</option>
                                                   <option value="USD">USD</option>
                                                   <option value="GBP">GBP</option>
-                                                  <option value="CHF">CHF</option>
                                                   <option value="CAD">CAD</option>
                                                   <option value="AUD">AUD</option>
                                                   <option value="NZD">NZD</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group mx-2 my-auto">
+                                            <div class="col-auto my-auto">
                                                 <i class="fa fa-exchange"></i>
                                             </div>
-                                            <div class="form-group mx-2 my-2">
+                                            <div class="col-auto my-2">
                                                 <select class="custom-select" id="to-currency">
                                                   <option value="USD" selected>USD</option>
                                                   <option value="USD">USD</option>
                                                   <option value="GBP">GBP</option>
-                                                  <option value="CHF">CHF</option>
                                                   <option value="CAD">CAD</option>
                                                   <option value="AUD">AUD</option>
                                                   <option value="NZD">NZD</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group mx-2 my-2">
+                                        </div>
+                                        <div class="form-row mx-auto col-12">
+                                            <div class="col-auto my-2">
                                                 <button type="button" class="btn btn-primary" id="convert" onclick="runCurrencyConverter()">Convert</button>
                                             </div>
                                         </div>
@@ -94,7 +96,7 @@
             <div class="container">
                 <div class="row">
                     <div class="chart col-xs-12 col-sm-12">
-                        <div class="chart-wrapper mx-2" id="hist-chart"></div>
+                        <div class="chart-wrapper" id="hist-chart"></div>
                     </div>
                 </div>
             </div> <!--container-->

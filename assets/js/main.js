@@ -5,7 +5,7 @@ import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 
 
 // Define const and variables
-const currencies = "USD,GBP,CHF,CAD,AUD,NZD"
+const currencies = "USD,GBP,CAD,AUD,NZD"
 const param_latest = "latest?base=EUR&symbols=" + currencies;
 var doc_data = "";
 
@@ -55,7 +55,7 @@ function getLatestRates() {
                         trend = `<span style="font-size: 1.3em; color: black;"><i class"fa">=</i></span>`;
                     }
 
-                    doc_data += `<tr><th scope="row">EUR / ${key}</th><td>${data_latest[key]}</td><td>${trend}</td></tr>`;
+                    doc_data += `<tr><th scope="row">EUR / ${key}</th><td>${data_latest[key].toFixed(4)}</td><td>${trend}</td></tr>`;
                 }
             }
 
@@ -87,7 +87,6 @@ function getHistoricalChart() {
             data_obj.push({ 'date': date_parser(row), 
                             'EUR_USD': parseFloat(data[row]['USD']),
                             'EUR_GBP': parseFloat(data[row]['GBP']),
-                            'EUR_CHF': parseFloat(data[row]['CHF']), 
                             'EUR_CAD': parseFloat(data[row]['CAD']), 
                             'EUR_AUD': parseFloat(data[row]['AUD']),
                             'EUR_NZD': parseFloat(data[row]['NZD'])
@@ -102,7 +101,6 @@ function getHistoricalChart() {
         {
             'USD': {column: 'EUR_USD'},
             'GBP': {column: 'EUR_GBP'},
-            'CHF': {column: 'EUR_CHF'},
             'CAD': {column: 'EUR_CAD'},
             'AUD': {column: 'EUR_AUD'},
             'NZD': {column: 'EUR_NZD'}

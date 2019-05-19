@@ -50,7 +50,7 @@ function runCurrencyConverter() {
     
             var convertedCurrency = (amountToConvert * data[toCurrency]).toFixed(4);
             
-            el.innerHTML = `<p>${convertedCurrency}</p>`;
+            el.innerHTML = `<p>${fromCurrency}${amountToConvert.toFixed(4)} = ${toCurrency}${convertedCurrency}</p>`;
         });
         
     }
