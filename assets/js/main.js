@@ -1,7 +1,6 @@
 // Imports
 import { formatDate, getData } from '/assets/js/utils.js';
 import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
-// import { runCurrencyConverter } from '/assets/js/currency_converter.js';
 
 
 // Constants and variables
@@ -25,7 +24,7 @@ var param_hist_period = `history?start_at=${fromDate}&end_at=${toDate}&symbols=`
 function getLatestRates() {
     var data_latest;
     var data_hist;
-    var data_table;
+    var data_table = "";
     
     getData(param_latest, function(data) {
                             console.log('data_latest');
@@ -60,7 +59,7 @@ function getLatestRates() {
             }
 
         
-            console.log('doc_data', data_table);
+            console.log('data_table', data_table);
         
             var el = document.getElementById("latest_rates");
             el.innerHTML = "";
@@ -119,4 +118,7 @@ function getHistoricalChart() {
 }
 
 getHistoricalChart();
-    
+
+
+
+   

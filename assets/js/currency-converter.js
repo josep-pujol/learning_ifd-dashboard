@@ -1,4 +1,6 @@
-// import { getData } from '/assets/js/utils.js';
+
+// import { getData } from './utils.js';
+
 const baseURL = "https://api.exchangeratesapi.io/";
 
 function getData(url_param, cb) {
