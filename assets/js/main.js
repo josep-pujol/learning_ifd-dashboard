@@ -8,8 +8,8 @@ const currencies = "USD,GBP,CAD,AUD,NZD";
 const param_latest = "latest?base=EUR&symbols=" + currencies;
 
 var today = new Date();
-var yesterday = new Date(today - 3*24*60*60*1000);
-var someDaysBack = new Date(today - 90 * 24*60*60*1000);
+var yesterday = new Date(today - 24*60*60*1000);
+var someDaysBack = new Date(today - 120 * 24*60*60*1000);
 var queryDate = formatDate(yesterday);
 var param_hist = `${queryDate}?base=EUR&symbols=` + currencies;
 
@@ -20,7 +20,7 @@ var param_hist_period = `history?start_at=${fromDate}&end_at=${toDate}&symbols=`
 
 
 
-
+// Get rates for last 24h and display them as table
 function getLatestRates() {
     var data_latest;
     var data_hist;
@@ -74,7 +74,7 @@ getLatestRates();
 
 
 
-
+// Get historical rates for the last 120 days and render rates in multiline chart
 function getHistoricalChart() {
  
     getData(param_hist_period, function(data) {

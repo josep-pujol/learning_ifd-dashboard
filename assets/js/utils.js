@@ -1,6 +1,6 @@
 
 
-
+// To format a date object to a valid string date for url query
 export function formatDate(dateToFormat) {
     var dd = dateToFormat.getDate();
     var mm = dateToFormat.getMonth()+1; 
@@ -13,6 +13,7 @@ export function formatDate(dateToFormat) {
 }
 
 
+// General function to call the API with different paramenters in url
 export function getData(url_param, cb) {
     const baseURL = "https://api.exchangeratesapi.io/";
     var xhr = new XMLHttpRequest();
