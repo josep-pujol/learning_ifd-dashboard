@@ -14,9 +14,9 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
     chartObj.data = dataset;
     console.log('dataset chart.Obj.data', chartObj.data);
-    chartObj.margin = {top: 25, right: 75, bottom: 45, left: 95};
+    chartObj.margin = {top: 25, right: 75, bottom: 75, left: 95};
     chartObj.width = 650 - chartObj.margin.left - chartObj.margin.right;
-    chartObj.height = 480 - chartObj.margin.top - chartObj.margin.bottom;
+    chartObj.height = 495 - chartObj.margin.top - chartObj.margin.bottom;
 
 // So we can pass the x and y as strings when creating the function
     chartObj.xFunct = function(d){return d[xName];};
@@ -68,11 +68,10 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
     chartObj.yScale = d3.scale.linear().range([chartObj.height, 0]).domain([d3.min(chartObj.yFuncts.map(chartObj.max))-scale_margin, 
                                                                             d3.max(chartObj.yFuncts.map(chartObj.max))+scale_margin]);
 
-    chartObj.formatAsYear = d3.time.format("%d/%m/%Y");//d3.format(""); ???
+    chartObj.formatAsYear = d3.time.format("%d/%m/%Y");
 
 //Create axis
     chartObj.xAxis = d3.svg.axis().scale(chartObj.xScale).orient("bottom").tickFormat(chartObj.xFormatter); //< Can be overridden in definition
-
     chartObj.yAxis = d3.svg.axis().scale(chartObj.yScale).orient("left").tickFormat(chartObj.yFormatter); //< Can be overridden in definition
 
 
@@ -131,11 +130,14 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
     chartObj.bind = function (selector) {
         chartObj.mainDiv = d3.select(selector);
+        
+        //Draw Title
+        chartObj.mainDiv.append("div").attr("class", "col-12 ml-2 pt-1").append("h5").text("Historical")
+        
         // Add all the divs to make it centered and responsive
-        chartObj.mainDiv.append("div"
-                                ).attr("class", "inner-wrapper").append("div"
-                                ).attr("class", "outer-box").append("div"
-                                ).attr("class", "inner-box");
+        chartObj.mainDiv.append("div").attr("class", "inner-wrapper"
+                       ).append("div").attr("class", "outer-box"
+                       ).append("div").attr("class", "inner-box");
         var chartSelector = selector + " .inner-box";
         chartObj.chartDiv = d3.select(chartSelector);
         d3.select(window).on('resize.' + chartSelector, chartObj.update_svg_size);
@@ -150,8 +152,8 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
                                         ).attr("class", "chart-area"
                                         ).attr("width", chartObj.width + (chartObj.margin.left + chartObj.margin.right)
                                         ).attr("height", chartObj.height + (chartObj.margin.top + chartObj.margin.bottom)
-                                        ).append("g"
-                                            ).attr("transform", "translate(" + chartObj.margin.left + "," + chartObj.margin.top + ")");
+                                        ).append("g").attr("transform", "translate(" + chartObj.margin.left + "," + chartObj.margin.top + ")");
+        
 
         // Draw Lines
         for (var y  in yObjs) {
@@ -168,14 +170,23 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         }
         
 
-        // Draw Axis
+        // Draw Axis 
         chartObj.svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + chartObj.height + ")"
                                         ).call(chartObj.xAxis
                                         ).append("text"
                                             ).attr("class", "label"
                                             ).attr("x", chartObj.width / 2
-                                            ).attr("y", 45).style("text-anchor", "middle"
+                                            ).attr("y", 70).style("text-anchor", "middle"
                                                           ).style("font-size", "0.9em").text(chartObj.xAxisLabel);
+        
+        chartObj.svg.selectAll("text").attr("transform", "rotate(25)"  // Rotate date text from axis
+                                     ).attr("dx", "2.5em"
+                                     ).attr("dy", "1.1em");
+                                     
+        chartObj.svg.selectAll(".label").attr("transform", "rotate(0)"  // Remove rotation from Axis Label
+                                                         ).attr("dx", "0"
+                                                         ).attr("dy", "0");
+
 
         chartObj.svg.append("g").attr("class", "y axis"
                                         ).call(chartObj.yAxis
@@ -186,6 +197,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
                                             ).attr("x", -chartObj.height / 2
                                             ).attr("dy", ".71em").style("text-anchor", "middle"
                                                                 ).style("font-size", "0.9em").text(chartObj.yAxisLabel);
+
 
         //Draw tooltips
         var focus = chartObj.svg.append("g").attr("class", "focus").style("display", "none");
@@ -201,7 +213,8 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         focus.append("text").attr("class", "focus date").attr("x", 9).attr("y", 7);
         // Focus line
         focus.append("line").attr("class", "focus line").attr("y1", 0).attr("y2", chartObj.height);
-
+        
+        
         //Draw legend
         var legend = chartObj.mainDiv.append('div').attr("class", "legend");
         for (var y  in yObjs) {

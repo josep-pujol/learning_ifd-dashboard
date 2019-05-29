@@ -31,6 +31,7 @@ function runCurrencyConverter() {
     var toCurrency = document.getElementById("to-currency").value;
     console.log('Data from Form: ', amountToConvert, fromCurrency, toCurrency);
     
+    
     // Show warning message when the amount introduced is not a valid number
     if (isNaN(amountToConvert)) {
         el.innerHTML = `<div class="alert alert-dismissible alert-warning mx-md-5 mt-3">
@@ -42,7 +43,7 @@ function runCurrencyConverter() {
 
     // No need to call API when amount is 0 or currency is the same
     if ( amountToConvert == 0 | fromCurrency == toCurrency ) {
-        el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(3)} ${fromCurrency}  =  <h5>${(amountToConvert*1).toFixed(4)} ${toCurrency}</h5></p>`;
+        el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(4)} ${fromCurrency}  <strong> = </strong> <h5>${(amountToConvert*1).toFixed(4)} ${toCurrency}</h5></p>`;
         
     } else {
         
@@ -55,7 +56,7 @@ function runCurrencyConverter() {
     
             var convertedCurrency = (amountToConvert * data[toCurrency]).toFixed(4);
             
-            el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(3)} ${fromCurrency}  =  <h5>${(convertedCurrency*1).toFixed(4)} ${toCurrency}</h5></p>`;
+            el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(4)} ${fromCurrency}  <strong> = </strong> <h5>${(convertedCurrency*1).toFixed(4)} ${toCurrency}</h5></p>`;
         });
         
     }
