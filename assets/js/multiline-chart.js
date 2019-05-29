@@ -60,13 +60,16 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 //Create scale functions
     chartObj.xScale = d3.scale.linear().range([0, chartObj.width]).domain(d3.extent(chartObj.data, chartObj.xFunct)); //< Can be overridden in definition
 
-// Get the max of every yFunct
+// Get the max and min of every yFunct
     chartObj.max = function (fn) {
         return d3.max(chartObj.data, fn);
     };
+    chartObj.min = function (fn) {
+        return d3.min(chartObj.data, fn);
+    };
     var scale_margin = 0.1;
-    chartObj.yScale = d3.scale.linear().range([chartObj.height, 0]).domain([d3.min(chartObj.yFuncts.map(chartObj.max))-scale_margin, 
-                                                                            d3.max(chartObj.yFuncts.map(chartObj.max))+scale_margin]);
+    chartObj.yScale = d3.scale.linear().range([chartObj.height, 0]).domain([d3.min(chartObj.yFuncts.map(chartObj.min)) - scale_margin, 
+                                                                            d3.max(chartObj.yFuncts.map(chartObj.max)) + scale_margin]);
 
     chartObj.formatAsYear = d3.time.format("%d/%m/%Y");
 

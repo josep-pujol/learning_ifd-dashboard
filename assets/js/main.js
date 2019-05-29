@@ -9,7 +9,7 @@ const param_latest = "latest?base=EUR&symbols=" + currencies;
 
 var today = new Date();
 var yesterday = new Date(today - 24*60*60*1000);
-var someDaysBack = new Date(today - 120 * 24*60*60*1000);
+var someDaysBack = new Date(today - 1095 * 24*60*60*1000);
 var queryDate = formatDate(yesterday);
 var param_hist = `${queryDate}?base=EUR&symbols=` + currencies;
 
@@ -20,7 +20,7 @@ var param_hist_period = `history?start_at=${fromDate}&end_at=${toDate}&symbols=`
 
 
 
-// Get rates for last 24h and display them as table
+// Get rates for last 3 years and display them as table
 function getLatestRates() {
     var data_latest;
     var data_hist;
