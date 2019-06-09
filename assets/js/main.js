@@ -4,6 +4,7 @@ import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 
 
 // Constants and variables
+const baseURL = "https://api.exchangeratesapi.io/";
 const currencies = "USD,GBP,CAD,AUD,NZD";
 const param_latest = "latest?base=EUR&symbols=" + currencies;
 
@@ -26,19 +27,17 @@ function getLatestRates() {
     var data_hist;
     var data_table = "";
     
-    getData(param_latest, function(data) {
+    getData(baseURL + param_latest, function(data) {
                             console.log('data_latest');
                             console.dir(data);
                             data_latest = data.rates;
                           
                         
-        getData(param_hist, function(data) {
+        getData(baseURL + param_hist, function(data) {
                                 console.log('data_hist');
                                 console.dir(data);
                                 data_hist = data.rates;
                        
-    
-            console.log(data_hist);
             
             console.log("start for loop")
             for (var key in data_latest) {
@@ -77,7 +76,7 @@ getLatestRates();
 // Get historical rates for the last 120 days and render rates in multiline chart
 function getHistoricalChart() {
  
-    getData(param_hist_period, function(data) {
+    getData(baseURL + param_hist_period, function(data) {
         console.dir(data);
         data = data.rates;
         var data_obj = [];

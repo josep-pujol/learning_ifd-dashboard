@@ -13,11 +13,9 @@ export function formatDate(dateToFormat) {
 }
 
 
-// General function to call the API with different paramenters in url
-export function getData(url_param, cb) {
-    const baseURL = "https://api.exchangeratesapi.io/";
+// General function to call the API with different urls
+export function getData(url, cb) {
     var xhr = new XMLHttpRequest();
-    var url = baseURL + url_param;
     console.log(url);
     
     xhr.open("GET", url);

@@ -3,9 +3,9 @@
 
 const baseURL = "https://api.exchangeratesapi.io/";
 
-function getData(url_param, cb) {
+
+function getData(url, cb) {
     var xhr = new XMLHttpRequest();
-    var url = baseURL + url_param;
     console.log(url);
     
     xhr.open("GET", url);
@@ -50,7 +50,7 @@ function runCurrencyConverter() {
         // Get exchange rate from API and calculate conversion with amount 
         var param_latest = `latest?base=${fromCurrency}&symbols=${toCurrency}`;
         
-        getData(param_latest, function(data) {
+        getData(baseURL + param_latest, function(data) {
             console.dir(data);
             data = data.rates;
     
