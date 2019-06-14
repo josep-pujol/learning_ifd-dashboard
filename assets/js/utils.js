@@ -1,7 +1,7 @@
 
 
 // To format a date object to a valid string date for url query
-export function formatDate(dateToFormat) {
+function formatDate(dateToFormat) {
     var dd = dateToFormat.getDate();
     var mm = dateToFormat.getMonth()+1; 
     var yyyy = dateToFormat.getFullYear();
@@ -14,7 +14,7 @@ export function formatDate(dateToFormat) {
 
 
 // General function to fetch data asynch from url
-export function getData(url) {
+function getData(url) {
     return new Promise(function(resolve, reject){
         console.log('getData_promise', url);
         let xhr = new XMLHttpRequest();
@@ -32,3 +32,6 @@ export function getData(url) {
         };
     });
 }
+
+
+export {formatDate, getData};
