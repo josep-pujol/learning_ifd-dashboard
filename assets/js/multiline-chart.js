@@ -1,7 +1,6 @@
 // modified version of code found at http://bl.ocks.org/asielen/44ffca2877d0132572cb
 
 export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
-    console.log('START makeMultiLineChart');
     var chartObj = {};
     var color = d3.scale.category10();
     chartObj.xAxisLabel = axisLabels.xAxis;
@@ -12,7 +11,6 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
      */
 
     chartObj.data = dataset;
-    console.log('dataset chart.Obj.data', chartObj.data);
     chartObj.margin = {top: 25, right: 90, bottom: 90, left: 110};
     chartObj.width = 1150 - chartObj.margin.left - chartObj.margin.right;
     chartObj.height = 900 - chartObj.margin.top - chartObj.margin.bottom;
@@ -29,10 +27,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
 // Object instead of array
     chartObj.yFuncts = [];
-    console.log('loopinng yObjs');
-    console.log(yObjs);
     for (var y  in yObjs) {
-        console.log(y);
         yObjs[y].name = y;
         yObjs[y].yFunct = getYFn(yObjs[y].column); //Need this  list for the ymax function
         chartObj.yFuncts.push(yObjs[y].yFunct);
@@ -112,9 +107,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         chartObj.svg.select('.y.axis .label').attr("x", -chartObj.height / 2);
 
         /* Force D3 to recalculate and update the line */
-        console.log('yObjs ')
         for (var y  in yObjs) {
-            console.log('yObjs[y].line', yObjs[y].line)
             yObjs[y].path.attr("d", yObjs[y].line);
             
         }
@@ -134,7 +127,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         chartObj.mainDiv = d3.select(selector);
         
         //Draw Title
-        chartObj.mainDiv.append("div").attr("class", "col-12 ml-2 pt-1").append("h4").text("Historical")
+        chartObj.mainDiv.append("div").attr("class", "col-12 ml-2 pt-1").append("h4").text("Historical");
         
         // Add all the divs to make it centered and responsive
         chartObj.mainDiv.append("div").attr("class", "inner-wrapper"
@@ -159,7 +152,6 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
         // Draw Lines
         for (var y  in yObjs) {
-            console.log(y);
             yObjs[y].path = chartObj.svg.append("path"
                                     ).datum(chartObj.data).attr("class", "line"
                                     ).attr("d", yObjs[y].line).style("stroke", color(y)
@@ -168,7 +160,6 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             }).on("mouseout", function () {
                 focus.transition().delay(700).style("display", "none");
             }).on("mousemove", mousemove);
-            console.log('yObjs[y].line', yObjs[y].line);
         }
         
 
@@ -252,8 +243,6 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         }
 
     };
-    console.log('END makeMultiLineChart');
-    console.dir(chartObj);
     return chartObj;
 }
 

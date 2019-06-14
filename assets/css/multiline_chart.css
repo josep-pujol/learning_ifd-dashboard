@@ -121,8 +121,6 @@
     font-weight: 400;
 }
 
-/*#hist-chart > div.inner-wrapper > div > div > svg > g > g.focus > text*/
-
 @media (max-width:500px) {
     .chart-wrapper .line {
         stroke-width: 3px;

@@ -1,15 +1,13 @@
 // Get conversion rate for selected amount and currencies. Display results or warning message
 
 export function runCurrencyConverter(getData, baseURL) {
-    console.log('START runCurrencyConverter');
     var el = document.getElementById("converted-currency");
     el.innerHTML = "";
     
     var amountToConvert = document.getElementById("amount").value.replace(/,/g, '.');
     var fromCurrency = document.getElementById("from-currency").value;
     var toCurrency = document.getElementById("to-currency").value;
-    console.log('Data from Form: ', amountToConvert, fromCurrency, toCurrency);
-    
+
     
     // Show warning message when the amount introduced is not a valid number
     if (isNaN(amountToConvert)) {
@@ -32,7 +30,6 @@ export function runCurrencyConverter(getData, baseURL) {
     
         // call getData and resolve promise to get conversion rate
         getData(baseURL + param_latest).then(function(data) {
-            console.dir(data);
             data = data.rates;
             var convertedCurrency = (amountToConvert * data[toCurrency]).toFixed(4);
             

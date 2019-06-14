@@ -2,7 +2,7 @@
 import { formatDate, getData } from './utils.js';
 import { runCurrencyConverter } from './currency-converter.js';
 import { makeMultiLineChart } from './multiline-chart.js';
-// /assets/js/
+
 
 // Constants and variables
 const baseURL = "https://api.exchangeratesapi.io/";
@@ -14,25 +14,18 @@ let threeDaysBack = new Date(today - 24*60*60*1000);
 let threeYearsBack = new Date(today - 1090 * 24*60*60*1000);
 let params3DaysBack = `${formatDate(threeDaysBack)}?base=EUR&symbols=` + currencies;
 let paramsHistorical = `history?start_at=${formatDate(threeYearsBack)}&end_at=${formatDate(threeDaysBack)}&symbols=` + currencies;
-// https://api.exchangeratesapi.io/history?start_at=2019-04-01&end_at=2019-05-10&symbols=USD,GBP,CAD,AUD
 
 
 
-// ------------- LATEST RATES CONSTRUCTOR  ------------- //
+// ------------- LATEST RATES TABLE CONSTRUCTOR  ------------- //
 
 // Get lastest rates and display them as table
-// suggested by tutor:
-// https://stackoverflow.com/questions/37121301/how-to-check-if-the-response-of-a-fetch-is-a-json-object-in-javascript
-// https://github.com/hschafer2017/Give-A-GIF/blob/a4d26dfc794a4fab36b5e38262360a3b749f3e72/index.js
-
 function buildLatestRatesTable(dataLatest, data3DaysBack) {
     let data_table = "";                       
-    console.log("start for loop");
+
     for (var key in dataLatest) {
         var trend;
         if (dataLatest.hasOwnProperty(key)) {
-            console.log(key + ":  " + dataLatest[key]);
-            
             if (dataLatest[key] - data3DaysBack[key] > 0) {
                 trend = `<span style="font-size: 1.3em; color: green;"><i class="fa fa-caret-up"></i></span>`;
             } else if (dataLatest[key] - data3DaysBack[key] < 0) {
@@ -44,13 +37,10 @@ function buildLatestRatesTable(dataLatest, data3DaysBack) {
             data_table += `<tr><th scope="row">EUR / ${key}</th><td>${dataLatest[key].toFixed(4)}</td><td>${trend}</td></tr>`;
         }
     }
-
-    console.log('data_table', data_table);
     var el = document.getElementById("latest_rates");
     el.innerHTML = "";
     el.innerHTML = data_table;
 }
-
 
 
 
@@ -71,31 +61,22 @@ function buildHistoricalChart(dataHistorical) {
                     });
     }
     
-    console.log(dataArray);
     dataArray.sort(function(a, b){return a.date - b.date});
-    console.log(dataArray);
-    
+
     var chartObj = makeMultiLineChart(
-        dataArray, 'date', 
-        {
-            'USD': {column: 'EUR_USD'},
-            'GBP': {column: 'EUR_GBP'},
-            'CAD': {column: 'EUR_CAD'},
-            'AUD': {column: 'EUR_AUD'},
-            'NZD': {column: 'EUR_NZD'}
-        }, 
-        {xAxis: 'Date', yAxis: 'Exchange Rate'});
-        
-    console.dir(chartObj);
-    console.log('before chartObj.bind("#hist-chart"); ');
+                        dataArray, 'date', 
+                        {
+                            'USD': {column: 'EUR_USD'},
+                            'GBP': {column: 'EUR_GBP'},
+                            'CAD': {column: 'EUR_CAD'},
+                            'AUD': {column: 'EUR_AUD'},
+                            'NZD': {column: 'EUR_NZD'}
+                        }, 
+                        {xAxis: 'Date', yAxis: 'Exchange Rate'});
+
     chartObj.bind("#hist-chart");
-    
-    console.log('before chartObj.render();');
     chartObj.render();
 }
-
-
-
 
 
 
@@ -113,19 +94,16 @@ Promise.all(apiCalls).then(
         let res = [];
         
         for (var i=0; i<urls.length; i++){
-            console.log('loop at', i, urls[i]);
             res[i] = urls[i].rates;
-            console.log(res[i]);
         }
         
-        console.log(res);
         buildLatestRatesTable(res[0], res[1]);
         buildHistoricalChart(res[2]);
 
 
-}).catch(function(urls){
-    console.log("Error fetching some data from urls: " + urls);
-});
+    }).catch(function(urls){
+        console.log("Error fetching some data from urls: " + urls);
+    });
 
 
 
