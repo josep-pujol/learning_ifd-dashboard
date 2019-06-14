@@ -14,9 +14,9 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
     chartObj.data = dataset;
     console.log('dataset chart.Obj.data', chartObj.data);
-    chartObj.margin = {top: 25, right: 75, bottom: 75, left: 95};
-    chartObj.width = 650 - chartObj.margin.left - chartObj.margin.right;
-    chartObj.height = 495 - chartObj.margin.top - chartObj.margin.bottom;
+    chartObj.margin = {top: 25, right: 90, bottom: 90, left: 110};
+    chartObj.width = 1150 - chartObj.margin.left - chartObj.margin.right;
+    chartObj.height = 900 - chartObj.margin.top - chartObj.margin.bottom;
 
 // So we can pass the x and y as strings when creating the function
     chartObj.xFunct = function(d){return d[xName];};
@@ -179,7 +179,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
                                         ).append("text"
                                             ).attr("class", "label"
                                             ).attr("x", chartObj.width / 2
-                                            ).attr("y", 70).style("text-anchor", "middle"
+                                            ).attr("y", 80).style("text-anchor", "middle"
                                                           ).style("font-size", "0.9em").text(chartObj.xAxisLabel);
         
         chartObj.svg.selectAll("text").attr("transform", "rotate(25)"  // Rotate date text from axis
@@ -196,7 +196,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
                                             ).append("text"
                                             ).attr("class", "label"
                                             ).attr("transform", "rotate(-90)"
-                                            ).attr("y", -72
+                                            ).attr("y", -80
                                             ).attr("x", -chartObj.height / 2
                                             ).attr("dy", ".71em").style("text-anchor", "middle"
                                                                 ).style("font-size", "0.9em").text(chartObj.yAxisLabel);
@@ -208,7 +208,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         for (var y  in yObjs) {
             yObjs[y].tooltip = focus.append("g");
             yObjs[y].tooltip.append("circle").attr("r", 2);
-            yObjs[y].tooltip.append("rect").attr("x", 7).attr("y","-17").attr("width",38).attr("height",'0.8em');
+            yObjs[y].tooltip.append("rect").attr("x", 7).attr("y","-17").attr("width",38).attr("height", "0.8em");
             yObjs[y].tooltip.append("text").attr("x", 9).attr("y","-10").attr("dy", ".35em");
         }
 

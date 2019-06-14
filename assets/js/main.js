@@ -6,18 +6,13 @@ import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
 // Constants and variables
 const baseURL = "https://api.exchangeratesapi.io/";
 const currencies = "USD,GBP,CAD,AUD,NZD";
-const param_latest = "latest?base=EUR&symbols=" + currencies;
+const paramsLatest = "latest?base=EUR&symbols=" + currencies;
 
-var today = new Date();
-var yesterday = new Date(today - 24*60*60*1000);
-var someDaysBack = new Date(today - 1095 * 24*60*60*1000);
-var queryDate = formatDate(yesterday);
-var param_hist = `${queryDate}?base=EUR&symbols=` + currencies;
-
-var fromDate = formatDate(someDaysBack);
-var toDate = formatDate(yesterday);
-var param_hist_period = `history?start_at=${fromDate}&end_at=${toDate}&symbols=` + currencies;
-// https://api.exchangeratesapi.io/history?start_at=2019-04-01&end_at=2019-05-10&symbols=USD,GBP,CAD,AUD
+let today = new Date();
+let threeDaysBack = new Date(today - 24*60*60*1000);
+let threeYearsBack = new Date(today - 1090 * 24*60*60*1000);
+let params3DaysBack = `${formatDate(threeDaysBack)}?base=EUR&symbols=` + currencies;
+let paramsHistorical = `history?start_at=${formatDate(threeYearsBack)}&end_at=${formatDate(threeDaysBack)}&symbols=` + currencies;
 
 
 
@@ -27,13 +22,13 @@ function getLatestRates() {
     var data_hist;
     var data_table = "";
     
-    getData(baseURL + param_latest, function(data) {
+    getData(baseURL + paramsLatest, function(data) {
                             console.log('data_latest');
                             console.dir(data);
                             data_latest = data.rates;
                           
                         
-        getData(baseURL + param_hist, function(data) {
+        getData(baseURL + params3DaysBack, function(data) {
                                 console.log('data_hist');
                                 console.dir(data);
                                 data_hist = data.rates;
@@ -76,7 +71,7 @@ getLatestRates();
 // Get historical rates for the last 120 days and render rates in multiline chart
 function getHistoricalChart() {
  
-    getData(baseURL + param_hist_period, function(data) {
+    getData(baseURL + paramsHistorical, function(data) {
         console.dir(data);
         data = data.rates;
         var data_obj = [];
