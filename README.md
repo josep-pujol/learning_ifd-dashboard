@@ -59,6 +59,7 @@ The site can be viewed [HERE]()
 ## Contributing
  
 ### Getting the code up and running
+https://josep-pujol.github.io/learning_ifd-dashboard/
 1. Firstly you will need to clone this repository by running the ```git clone <project's Github URL>``` command
 2. After you've that you'll need to make sure that you have **npm** installed
   1. You can get **npm** by installing Node from [here](https://nodejs.org/en/)

@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FOREX - Currency Exchange</title>
-
+    
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/libraries/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/multiline_chart.css">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-
+    
     <!--JavaScript-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <script src="https://d3js.org/d3-time.v1.min.js"></script>
     <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
     <script type="module" src="assets/js/main.js"></script>
-    <script type="text/javascript" src="assets/js/currency-converter.js"></script>
-
 </head>
 
 <body>
@@ -44,14 +42,14 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col" colspan="3">
-                                                    <h5>Latest Rates</h5>
+                                                    <h4>Latest Rates</h4>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody id="latest_rates"></tbody>
                                     </table>
                                 </div>
-
+                                
                                 <!--Space between Latest Rates and Currencty Converter tool-->
                                 <div class="spacing col-md-1 mb-3"></div>
 
@@ -59,8 +57,8 @@
                                 <div class="currency-converter col-sm-12 col-md-7">
                                     <form>
                                         <div class="form-row col-12 ml-2">
-                                            <div class="pt-1">
-                                                <h5>Currency Converter</h5>
+                                            <div class="pl-1 pt-1">
+                                                <h4>Currency Converter</h4>
                                             </div>
                                         </div>
                                         <div class="form-row col-12 ml-2">
@@ -93,7 +91,7 @@
                                         </div>
                                         <div class="form-row col-12 ml-2">
                                             <div class="col-auto my-2">
-                                                <button type="button" class="btn btn-primary" id="convert" onclick="runCurrencyConverter()">Convert</button>
+                                                <button type="button" class="btn btn-primary" id="convert" onclick="">Convert</button>
                                             </div>
                                         </div>
                                         <div class="text-center col-12 mb-1" id="converted-currency"></div>
@@ -119,9 +117,8 @@
             </div>
             <!--End container-->
         </section>
-
     </main>
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 </body>
 
 </html>

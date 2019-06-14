@@ -1,4 +1,3 @@
-
 // modified version of code found at http://bl.ocks.org/asielen/44ffca2877d0132572cb
 
 export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
@@ -135,7 +134,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         chartObj.mainDiv = d3.select(selector);
         
         //Draw Title
-        chartObj.mainDiv.append("div").attr("class", "col-12 ml-2 pt-1").append("h5").text("Historical")
+        chartObj.mainDiv.append("div").attr("class", "col-12 ml-2 pt-1").append("h4").text("Historical")
         
         // Add all the divs to make it centered and responsive
         chartObj.mainDiv.append("div").attr("class", "inner-wrapper"
