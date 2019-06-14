@@ -13,18 +13,22 @@ export function formatDate(dateToFormat) {
 }
 
 
-// General function to call the API with different urls
-export function getData(url, cb) {
-    var xhr = new XMLHttpRequest();
-    console.log(url);
+// General function to fetch data asynch from url
+export function getData(url) {
+    return new Promise(function(resolve, reject){
+        console.log('getData_promise', url);
+        let xhr = new XMLHttpRequest();
     
-    xhr.open("GET", url);
-    xhr.send();
-
-    xhr.onreadystatechange = function() {
-        console.log(this.readyState);
-        if (this.readyState == 4 && this.status == 200) {
-            cb(JSON.parse(this.responseText));
-        }
-    };
+        xhr.open("GET", url);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            console.log(this.readyState);
+            if (this.readyState == 4 && this.status == 200) {
+                resolve(JSON.parse(this.responseText));
+            }
+        };  
+        xhr.onerror = function(err) {
+            console.log('ERROR at getData: ', err);
+        };
+    });
 }

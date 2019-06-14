@@ -1,5 +1,5 @@
-
 // Get conversion rate for selected amount and currencies. Display results or warning message
+
 export function runCurrencyConverter(getData, baseURL) {
     console.log('START runCurrencyConverter');
     var el = document.getElementById("converted-currency");
@@ -29,13 +29,17 @@ export function runCurrencyConverter(getData, baseURL) {
         // Get exchange rate from API and calculate conversion with amount 
         var param_latest = `latest?base=${fromCurrency}&symbols=${toCurrency}`;
         
-        getData(baseURL + param_latest, function(data) {
+    
+        // call getData and resolve promise to get conversion rate
+        getData(baseURL + param_latest).then(function(data) {
             console.dir(data);
             data = data.rates;
-    
             var convertedCurrency = (amountToConvert * data[toCurrency]).toFixed(4);
             
             el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(4)} ${fromCurrency}  <strong> = </strong> <h5>${(convertedCurrency*1).toFixed(4)} ${toCurrency}</h5></p>`;
+            
+        }).catch(function(err) {
+            console.log('Error Currency Converter Tool, getData: ', err);
         });
         
     }
