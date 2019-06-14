@@ -1,6 +1,7 @@
 // Imports
 import { formatDate, getData } from '/assets/js/utils.js';
 import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
+import { runCurrencyConverter } from '/assets/js/currency-converter.js';
 
 
 // Constants and variables
@@ -114,5 +115,13 @@ function getHistoricalChart() {
 getHistoricalChart();
 
 
+//  ------------- EVENT CURRENCY CONVERTER BUTTON  ------------- //
+
+// Button Event functionality to Convert Currencies
+$(document).ready(function() {
+    $("#convert").on("click", function() {
+        runCurrencyConverter(getData, baseURL);
+    });
+});
 
    
