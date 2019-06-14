@@ -1,12 +1,13 @@
 /* http://bl.ocks.org/asielen/44ffca2877d0132572cb*/
 
-
 .chart-wrapper {
     max-width: 1150px;
     min-width: 350px;
     margin: 0 auto;
-    background-color: #F8F8F8; /* original color #FAF7F7 */
+    background-color: #F8F8F8;
+    /* original color #FAF7F7 */
 }
+
 
 .chart-wrapper .inner-wrapper {
     position: relative;
@@ -16,7 +17,10 @@
 
 .chart-wrapper .outer-box {
     position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .chart-wrapper .inner-box {
@@ -25,13 +29,13 @@
 }
 
 .chart-wrapper text {
-  font-family: sans-serif;
-  font-size: 12px;
+    font-family: sans-serif;
+    font-size: 15px;
 }
 
 .chart-wrapper p {
     font-size: 16px;
-    margin-top:5px;
+    margin-top: 5px;
     margin-bottom: 40px;
 }
 
@@ -45,16 +49,16 @@
 }
 
 .chart-wrapper .axis path {
-  stroke-width: 2px;
+    stroke-width: 2px;
 }
 
 .chart-wrapper .line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1px;
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1px;
 }
 
-.chart-wrapper .legend  {
+.chart-wrapper .legend {
     min-width: 200px;
     display: flex;
     justify-content: flex-start;
@@ -63,13 +67,13 @@
     padding: 10px 50px;
 }
 
-.chart-wrapper .legend > div {
+.chart-wrapper .legend>div {
     margin: 0px 25px 10px 0px;
     flex-grow: 0;
 }
 
 .chart-wrapper .legend p {
-    display:inline;
+    display: inline;
     font-size: 0.8em;
     font-family: sans-serif;
     font-weight: 600;
@@ -86,14 +90,14 @@
 }
 
 .chart-wrapper .overlay {
-  fill: none;
-  pointer-events: all;
+    fill: none;
+    pointer-events: all;
 }
 
 .chart-wrapper .focus circle {
-  fill: black;
-  stroke: black;
-  stroke-width: 2px;
+    fill: black;
+    stroke: black;
+    stroke-width: 2px;
 }
 
 .chart-wrapper .focus rect {
@@ -104,12 +108,26 @@
 
 .chart-wrapper .focus.line {
     stroke: steelblue;
-    stroke-dasharray: 2,5;
+    stroke-dasharray: 2, 5;
     stroke-width: 2;
     opacity: 0.5;
 }
 
-@media (max-width:500px){
-    .chart-wrapper .line {stroke-width: 3px;}
-    .chart-wrapper .legend {font-size: 14px;}
+.chart-wrapper .focus text {
+    font-weight: 600;
+}
+
+.chart-wrapper .focus.date {
+    font-weight: 400;
+}
+
+/*#hist-chart > div.inner-wrapper > div > div > svg > g > g.focus > text*/
+
+@media (max-width:500px) {
+    .chart-wrapper .line {
+        stroke-width: 3px;
+    }
+    .chart-wrapper .legend {
+        font-size: 14px;
+    }
 }

@@ -4,8 +4,9 @@
 }
 
 .table{
-    width: 215px;
+    width: 210px;
     margin: auto;
+    padding-bottom: 2px;
 }  
 
 .table, th, td {
