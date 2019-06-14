@@ -1,8 +1,8 @@
 // Imports
-import { formatDate, getData } from '/assets/js/utils.js';
-import { runCurrencyConverter } from '/assets/js/currency-converter.js';
-import { makeMultiLineChart } from '/assets/js/multiline-chart.js';
-
+import { formatDate, getData } from './utils.js';
+import { runCurrencyConverter } from './currency-converter.js';
+import { makeMultiLineChart } from './multiline-chart.js';
+// /assets/js/
 
 // Constants and variables
 const baseURL = "https://api.exchangeratesapi.io/";
