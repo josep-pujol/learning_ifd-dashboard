@@ -13,7 +13,7 @@ function formatDate(dateToFormat) {
 }
 
 
-// General function to fetch data asynch from url
+// General function to fetch data asynchronously from different urls
 function getData(url) {
     return new Promise(function(resolve, reject){
         let xhr = new XMLHttpRequest();
