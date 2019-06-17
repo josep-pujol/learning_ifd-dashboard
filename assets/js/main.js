@@ -10,7 +10,7 @@ const currencies = "USD,GBP,CAD,AUD,NZD";
 const paramsLatest = "latest?base=EUR&symbols=" + currencies;
 
 let today = new Date();
-let threeDaysBack = new Date(today - 24*60*60*1000);
+let threeDaysBack = new Date(today - 3 * 24*60*60*1000);
 let threeYearsBack = new Date(today - 1090 * 24*60*60*1000);
 let params3DaysBack = `${formatDate(threeDaysBack)}?base=EUR&symbols=` + currencies;
 let paramsHistorical = `history?start_at=${formatDate(threeYearsBack)}&end_at=${formatDate(threeDaysBack)}&symbols=` + currencies;
