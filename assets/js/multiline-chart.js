@@ -15,8 +15,10 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
     chartObj.width = 1150 - chartObj.margin.left - chartObj.margin.right;
     chartObj.height = 900 - chartObj.margin.top - chartObj.margin.bottom;
 
+
 // So we can pass the x and y as strings when creating the function
     chartObj.xFunct = function(d){return d[xName];};
+
 
 // For each yObjs argument, create a yFunction
     function getYFn(column) {
@@ -25,6 +27,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         };
     }
 
+
 // Object instead of array
     chartObj.yFuncts = [];
     for (var y  in yObjs) {
@@ -32,6 +35,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         yObjs[y].yFunct = getYFn(yObjs[y].column); //Need this  list for the ymax function
         chartObj.yFuncts.push(yObjs[y].yFunct);
     }
+
 
 //Formatter functions for the axes
     chartObj.formatAsDate = d3.timeFormat("%d/%m/%Y");
@@ -44,15 +48,15 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         } else {
             return d3.format(".0f")(d);
         }
-        
     };
     chartObj.xFormatter = chartObj.formatAsDate;
     chartObj.yFormatter = chartObj.formatAsFloat;
-
     chartObj.bisectYear = d3.bisector(chartObj.xFunct).left; //< Can be overridden in definition
+
 
 //Create scale functions
     chartObj.xScale = d3.scale.linear().range([0, chartObj.width]).domain(d3.extent(chartObj.data, chartObj.xFunct)); //< Can be overridden in definition
+
 
 // Get the max and min of every yFunct
     chartObj.max = function (fn) {
@@ -64,8 +68,8 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
     var scale_margin = 0.1;
     chartObj.yScale = d3.scale.linear().range([chartObj.height, 0]).domain([d3.min(chartObj.yFuncts.map(chartObj.min)) - scale_margin, 
                                                                             d3.max(chartObj.yFuncts.map(chartObj.max)) + scale_margin]);
-
     chartObj.formatAsYear = d3.time.format("%d/%m/%Y");
+
 
 //Create axis
     chartObj.xAxis = d3.svg.axis().scale(chartObj.xScale).orient("bottom").tickFormat(chartObj.xFormatter); //< Can be overridden in definition
@@ -83,14 +87,13 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             return chartObj.xScale(chartObj.xFunct(d));
         }).y(getYScaleFn(yObj));
     }
-    
 
     chartObj.svg;
+
 
 // Change chart size according to window size
     chartObj.update_svg_size = function () {
         chartObj.width = parseInt(chartObj.chartDiv.style("width"), 10) - (chartObj.margin.left + chartObj.margin.right);
-
         chartObj.height = parseInt(chartObj.chartDiv.style("height"), 10) - (chartObj.margin.top + chartObj.margin.bottom);
 
         /* Update the range of the scale with new width/height */
@@ -102,14 +105,12 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         /* Else Update the axis with the new scale */
         chartObj.svg.select('.x.axis').attr("transform", "translate(0," + chartObj.height + ")").call(chartObj.xAxis);
         chartObj.svg.select('.x.axis .label').attr("x", chartObj.width / 2);
-
         chartObj.svg.select('.y.axis').call(chartObj.yAxis);
         chartObj.svg.select('.y.axis .label').attr("x", -chartObj.height / 2);
 
         /* Force D3 to recalculate and update the line */
         for (var y  in yObjs) {
             yObjs[y].path.attr("d", yObjs[y].line);
-            
         }
         
 
@@ -139,6 +140,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
         chartObj.update_svg_size();
         return chartObj;
     };
+
 
 // Render the chart
     chartObj.render = function () {
@@ -201,6 +203,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             yObjs[y].tooltip.append("rect").attr("x", 7).attr("y","-17").attr("width",38).attr("height", "0.8em");
             yObjs[y].tooltip.append("text").attr("x", 9).attr("y","-10").attr("dy", ".35em");
         }
+        
 
         // Date label
         focus.append("text").attr("class", "focus date").attr("x", 9).attr("y", 7);
@@ -216,6 +219,7 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
             series.append('p').text(y);
             yObjs[y].legend = series;
         }
+        
 
         // Overlay to capture hover
         chartObj.svg.append("rect").attr("class", "overlay").attr("width", chartObj.width).attr("height", chartObj.height).on("mouseover", function () {
@@ -226,11 +230,16 @@ export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
 
         return chartObj;
         
+        
         function mousemove() {
             var x0 = chartObj.xScale.invert(d3.mouse(this)[0]), i = chartObj.bisectYear(dataset, x0, 1), d0 = chartObj.data[i - 1], d1 = chartObj.data[i];
+            
             try {
                 var d = x0 - chartObj.xFunct(d0) > chartObj.xFunct(d1) - x0 ? d1 : d0;
-            } catch (e) { return;}
+            } catch (e) { 
+                return;
+            }
+            
             var minY = chartObj.height;
             for (var y  in yObjs) {
                 yObjs[y].tooltip.attr("transform", "translate(" + chartObj.xScale(chartObj.xFunct(d)) + "," + chartObj.yScale(yObjs[y].yFunct(d)) + ")");

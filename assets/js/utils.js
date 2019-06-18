@@ -16,6 +16,7 @@ export function formatDate(dateToFormat) {
 // General function to fetch data asynchronously from different urls
 export function getData(url) {
     return new Promise(function(resolve, reject){
+        
         let xhr = new XMLHttpRequest();
     
         xhr.open("GET", url);
@@ -24,10 +25,12 @@ export function getData(url) {
             if (this.readyState == 4 && this.status == 200) {
                 resolve(JSON.parse(this.responseText));
             }
-        };  
+        };
+        
         xhr.onerror = function(err) {
             console.log('ERROR at getData: ', err);
         };
+        
     });
 }
 

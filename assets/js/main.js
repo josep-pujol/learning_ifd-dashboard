@@ -37,6 +37,7 @@ function buildLatestRatesTable(dataLatest, data3DaysBack) {
             data_table += `<tr><th scope="row">EUR / ${key}</th><td>${dataLatest[key].toFixed(4)}</td><td>${trend}</td></tr>`;
         }
     }
+    
     var el = document.getElementById("latest_rates");
     el.innerHTML = "";
     el.innerHTML = data_table;
@@ -99,7 +100,6 @@ Promise.all(apiCalls).then(
         
         buildLatestRatesTable(res[0], res[1]);
         buildHistoricalChart(res[2]);
-
 
     }).catch(function(urls){
         console.log("Error fetching some data from urls: " + urls);

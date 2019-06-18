@@ -29,7 +29,6 @@ describe("Utils", function() {
             var dateToFormat = new Date('2019-11-19T05:05:00');
             expect(formatDate(dateToFormat)).toBe('2019-11-19');
         });
-
     });
     
     describe("getData function", function() {
@@ -45,6 +44,5 @@ describe("Utils", function() {
             });
         });
     });
-
 
 });  

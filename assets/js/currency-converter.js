@@ -23,11 +23,9 @@ export function runCurrencyConverter(getData, baseURL) {
         el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(4)} ${fromCurrency}  <strong> = </strong> <h5>${(amountToConvert*1).toFixed(4)} ${toCurrency}</h5></p>`;
         
     } else {
-        
         // Get exchange rate from API and calculate conversion with amount 
         var param_latest = `latest?base=${fromCurrency}&symbols=${toCurrency}`;
         
-    
         // call getData and resolve promise to get conversion rate
         getData(baseURL + param_latest).then(function(data) {
             data = data.rates;
@@ -35,10 +33,9 @@ export function runCurrencyConverter(getData, baseURL) {
             
             el.innerHTML = `<p class="m-1">${(amountToConvert*1).toFixed(4)} ${fromCurrency}  <strong> = </strong> <h5>${(convertedCurrency*1).toFixed(4)} ${toCurrency}</h5></p>`;
             
-        }).catch(function(err) {
-            console.log('Error Currency Converter Tool, getData: ', err);
-        });
-        
+            }).catch(function(err) {
+                console.log('Error Currency Converter Tool, getData: ', err);
+            });
     }
 }
 
