@@ -4,32 +4,32 @@
  
 ### What is this website for?
  
-This is a website for people working on the currency exchange markets.
+This website gives historical information on the currency exchange rates for different currencies, and provides a tool to convert different amounts of those currencies
  
 ### What does it do?
  
-This website is made of a single page in which users can have the latest exchange rates, their trends over time, or the capability to convert different amounts of one currency to another.
+This website is made of a single page in which users have the latest exchange rates, their trends over time, or the capability to convert different amounts of one currency to another.
  
 ### How does it work
  
 This website mainly uses **Javascript** to display and provide interactivity to the users. The site is styled with **Bootstrap** and is responsive.
 The information is queried from the European Central Bank API using  **XMLHttpRequest** standard, and then rendered with **jQuery** and **D3.js**. 
-The site can be viewed [HERE]()
+The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboard/)
 
 ## Features
  
 ### Existing Features
-- section with latest rates compared to Euros
+- section with latest rates with Euros as base
     - latest exchange rate available from API
-    - trend icon to visualy display changes in the exchange rate on the last 24h
+    - trend icon to visualy display latest rates changes
 - currency converter tool  
     - converts the selected amount between currencies
     - rates are the latest available from the API
-    - 6 currencies to convert both ways
+    - 6 currencies to convert, both ways
     - warning message when amount is not a valid number
 - section with historical rates
     - multiline chart with 3 years information of the implemented currencies 
-    - the chart include focus lines with information labels for each lines
+    - the chart include focus lines with information labels for each line
     - there is a dynamic label with the current date on the top left of the chart
 
 ### Features Left to Implement
@@ -41,7 +41,7 @@ The site can be viewed [HERE]()
 - **HTML**, **CSS** and **Javascript**
     - Base languages used to create website
 - [Bootstrap](http://getbootstrap.com/)
-    - Used **Bootstrap4** to give to the project a simple, responsive layout
+    - Used **Bootstrap4** to give to the project a responsive layout and styles
 - [JQuery](https://jquery.com)
     - **JQuery** as a dependency for **D3.js**
 - [D3.js](https://d3js.org)
@@ -49,11 +49,13 @@ The site can be viewed [HERE]()
 
 
 ## Testing
-- Prototype code was written and tested using jasmine
-- All code used on the site has been tested to ensure everything is working as expected
+- Prototype code was written and tested using jasmine. Automatic tests include
+    - Tests several dates to ensure function formatDate provide appropiate formatting
+    - Test a call to the API and looks for key information in the response
+- All code used on the site has been manually tested to ensure everything is working as expected
 - Site viewed and tested in the following browsers:
   - Google Chrome
-  - Brave
+  - Microsoft Edge
   - Mozilla Firefox
 
 ## Contributing
@@ -61,12 +63,9 @@ The site can be viewed [HERE]()
 ### Getting the code up and running
 https://josep-pujol.github.io/learning_ifd-dashboard/
 1. Firstly you will need to clone this repository by running the ```git clone <project's Github URL>``` command
-2. After you've that you'll need to make sure that you have **npm** installed
+2. After, you'll need to ensure you have **npm** installed
   1. You can get **npm** by installing Node from [here](https://nodejs.org/en/)
-4. After those dependencies have been installed you'll need to make sure that you have **http-server** installed. You can install this by running the following: ```npm install -g http-server # this also may require sudo on Mac/Linux```
-5. Once **http-server** is installed run ```http-server -c-1```
-6. The project will now run on [localhost](http://127.0.0.1:8080)
-7. Make changes to the code and if you think it belongs in here then just submit a pull request
+3. After those dependencies have been installed you only need to run the code in a server, being the entrance point the index.html file
 
 ## Credits
 
