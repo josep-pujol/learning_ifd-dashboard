@@ -1,4 +1,7 @@
 
+import { formatDate, getData } from '../js/utils.js';
+
+
 describe("Utils", function() {
 
     describe("formatDate function", function() {
@@ -26,7 +29,22 @@ describe("Utils", function() {
             var dateToFormat = new Date('2019-11-19T05:05:00');
             expect(formatDate(dateToFormat)).toBe('2019-11-19');
         });
-        
+
     });
+    
+    describe("getData function", function() {
+        it("should exist", function() {
+            expect(getData).toBeDefined();
+        });
+        
+        it("Call returns JSON file with keys 'base' and rates'", function() {
+            var url = 'https://api.exchangeratesapi.io/latest?';
+            return getData(url).then(function(data) {
+                expect(Object.keys(data).includes('base')).toBe(true);
+                expect(Object.keys(data).includes('rates')).toBe(true);
+            });
+        });
+    });
+
 
 });  
