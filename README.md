@@ -53,7 +53,7 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
     - To deploy the project
 
 ## Testing
-- Unit testing was ran using Jasmine. Tests include:
+- Unit tests with Jasmine include:
     - Tests several dates to ensure the function formatDate return appropiate formatting
     - Test a call to the API and verifies that essential keys are in the response
 - All code used on this site has been manually tested to ensure everything is working as expected. Some tests include:
@@ -62,7 +62,7 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
         - different currencies 
         - different amounts
         - invalid amounts
-    - mouse hovering over the Multiline chart to display dynamic labels including: currency, value exchange rate and date
+    - mouse hovering over the Multiline chart to display dynamic labels including: currency, exchange rate and date
 - Site viewed and tested in the following browsers:
   - Google Chrome
   - Microsoft Edge
@@ -73,8 +73,7 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
 ### Getting the code up and running
 
 1. Firstly you will need to download this repository; or clone it by running the ```git clone <project's Github URL>``` command
-2. After, you'll need to ensure you have **npm** installed
-  - You can get **npm** by installing Node from [here](https://nodejs.org/en/)
+2. After, you'll need to ensure you have **npm** installed. You can get **npm** by installing Node from [here](https://nodejs.org/en/)
 3. After those dependencies have been installed, you only need to run the code in your server, using "index.html" file as entry point
 
 To deploy in Github Pages you can follow official instructions from Github Pages: [Instructions](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages)

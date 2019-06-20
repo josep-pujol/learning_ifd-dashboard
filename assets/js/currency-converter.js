@@ -1,5 +1,5 @@
-// Get conversion rate for selected amount and currencies. Display results or warning message
 
+// Get conversion rate for selected amount and currencies. Display results or warning message
 export function runCurrencyConverter(getData, baseURL) {
     var el = document.getElementById("converted-currency");
     el.innerHTML = "";

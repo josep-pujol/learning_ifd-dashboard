@@ -1,5 +1,6 @@
-// modified version of code found at http://bl.ocks.org/asielen/44ffca2877d0132572cb
 
+// Modified version of code found at http://bl.ocks.org/asielen/44ffca2877d0132572cb
+// Code tp constructs the multiline chart
 export function makeMultiLineChart(dataset, xName, yObjs, axisLabels) {
     var chartObj = {};
     var color = d3.scale.category10();

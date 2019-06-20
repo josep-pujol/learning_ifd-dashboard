@@ -62,10 +62,11 @@ function buildHistoricalChart(dataHistorical) {
                     });
     }
     
-    dataArray.sort(function(a, b){return a.date - b.date});
+    dataArray.sort(function(a, b){return a.date - b.date;});
 
     var chartObj = makeMultiLineChart(
-                        dataArray, 'date', 
+                        dataArray, 
+                        'date', 
                         {
                             'USD': {column: 'EUR_USD'},
                             'GBP': {column: 'EUR_GBP'},
