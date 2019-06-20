@@ -33,6 +33,22 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
     - the chart includes focus lines with information labels for each currency
     - there is a dynamic label with the current date on the top left of the chart
 
+## UX
+
+### Layout
+- used Bootstrap grid to split the site in different sections
+- white background which separates different sections in different background color
+- top bar with title used dark blue background color with white text
+- middle section, with two subsections, grey background with strong black text
+- bottom section with multiline chart:
+    - grey background with strong black text
+    - legend with different colors to differentiate currencies
+
+### Wireframe
+
+I used Google sheet to create the original wireframe / mock-up. Below a screenshot of the wireframe:
+![Testing as .png](https://github.com/josep-pujol/learning_ifd-dashboard/tree/master/wireframe/wireframe_ifd-dashboard.png)
+
 ## Tech Used
 
 ### Some the tech used includes:
