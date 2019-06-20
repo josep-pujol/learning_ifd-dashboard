@@ -1,4 +1,6 @@
+
 # Forex Currency Exchange Markets Website
+
  
 ## Overview
  
@@ -15,6 +17,7 @@ This website is made of a single page in which users have the latest exchange ra
 This website mainly uses **Javascript** to display and provide interactivity to the users. The site is styled with **Bootstrap** and is responsive.
 The information is queried from the European Central Bank API using  **XMLHttpRequest** standard, and then rendered with **jQuery** and **D3.js**. 
 The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboard/)
+
 
 ## Features
  
@@ -33,6 +36,7 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
     - the chart includes focus lines with information labels for each currency
     - there is a dynamic label with the current date on the top left of the chart
 
+
 ## UX
 
 ### Layout
@@ -46,9 +50,11 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
 
 ### Wireframe
 
-I used Google sheet to create the original wireframe / mock-up. Below a screenshot of the wireframe:
+I used Google Sheets to create the original wireframe / mock-up. See screenshot of the wireframe:
+
 ![Testing as .png](https://github.com/josep-pujol/learning_ifd-dashboard/blob/master/wireframe/wireframe_ifd-dashboard.PNG)
-## Tech Used
+
+## Technologies Used
 
 ### Some the tech used includes:
 
@@ -67,6 +73,7 @@ I used Google sheet to create the original wireframe / mock-up. Below a screensh
 - [Github Pages](https://pages.github.com/)
     - To deploy the project
 
+
 ## Testing
 - Unit tests with Jasmine include:
     - Tests several dates to ensure the function formatDate return appropiate formatting
@@ -83,6 +90,7 @@ I used Google sheet to create the original wireframe / mock-up. Below a screensh
   - Microsoft Edge
   - Mozilla Firefox
 
+
 ## Contributing
  
 ### Getting the code up and running
@@ -92,6 +100,7 @@ I used Google sheet to create the original wireframe / mock-up. Below a screensh
 3. After those dependencies have been installed, you only need to run the code in your server, using "index.html" file as entry point
 
 To deploy in Github Pages you can follow official instructions from Github Pages: [Instructions](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages)
+
 
 ## Credits
 
