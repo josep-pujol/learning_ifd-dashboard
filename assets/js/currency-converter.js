@@ -26,7 +26,7 @@ export function runCurrencyConverter(getData, baseURL) {
         // Get exchange rate from API and calculate conversion with amount 
         var param_latest = `latest?base=${fromCurrency}&symbols=${toCurrency}`;
         
-        // call getData and resolve promise to get conversion rate
+        // call getData and resolve promise to get latest conversion rates
         getData(baseURL + param_latest).then(function(data) {
             data = data.rates;
             var convertedCurrency = (amountToConvert * data[toCurrency]).toFixed(4);

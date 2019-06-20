@@ -19,6 +19,7 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
 ## Features
  
 ### Existing Features
+
 - section with latest rates using Euros as a base
     - latest exchange rate available from API
     - trend icon to visualy display latest changes in exchange rates
@@ -29,32 +30,39 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
     - warning message when amount is not a valid number
 - section with historical rates
     - multiline chart with 3 years information of the implemented currencies 
-    - the chart include focus lines with information labels for each line
+    - the chart includes focus lines with information labels for each currency
     - there is a dynamic label with the current date on the top left of the chart
-
-### Features Left to Implement
-- None
 
 ## Tech Used
 
 ### Some the tech used includes:
+
 - **HTML**, **CSS** and **Javascript**
-    - Base languages used to create website
+    - Base languages used to create the site templates
 - [Bootstrap](http://getbootstrap.com/)
-    - Used **Bootstrap4** to give to the project a responsive layout and styles
+    - Used **Bootstrap4** for a responsive layout and styling
 - [JQuery](https://jquery.com)
     - **JQuery** as a dependency for **D3.js**
 - [D3.js](https://d3js.org)
-    - Used **d3.js** to build and render the multiline chart
+    - Used **d3.js** to build and render a Multiline chart
 - [Jasmine](https://jasmine.github.io/)
-    - Used for the unit tests  
-
+    - Used for unit testing 
+- [Github](https://github.com/)
+    - Used as repository of the project 
+- [Github Pages](https://pages.github.com/)
+    - To deploy the project
 
 ## Testing
-- Prototype code was written and tested using jasmine. Tests include:
-    - Tests several dates to ensure function formatDate provide appropiate formatting
-    - Test a call to the API and looks for key information in the response
-- All code used on the site has been manually tested to ensure everything is working as expected
+- Unit testing was ran using Jasmine. Tests include:
+    - Tests several dates to ensure the function formatDate return appropiate formatting
+    - Test a call to the API and verifies that essential keys are in the response
+- All code used on this site has been manually tested to ensure everything is working as expected. Some tests include:
+    - site responsiveness
+    - functionality of the currency converter
+        - different currencies 
+        - different amounts
+        - invalid amounts
+    - mouse hovering over the Multiline chart to display dynamic labels including: currency, value exchange rate and date
 - Site viewed and tested in the following browsers:
   - Google Chrome
   - Microsoft Edge
@@ -63,17 +71,22 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
 ## Contributing
  
 ### Getting the code up and running
+
 1. Firstly you will need to download this repository; or clone it by running the ```git clone <project's Github URL>``` command
 2. After, you'll need to ensure you have **npm** installed
-  1. You can get **npm** by installing Node from [here](https://nodejs.org/en/)
-3. After those dependencies have been installed you only need to run the code in a server, being the entrance point the "index.html" file
+  - You can get **npm** by installing Node from [here](https://nodejs.org/en/)
+3. After those dependencies have been installed, you only need to run the code in your server, using "index.html" file as entry point
+
+To deploy in Github Pages you can follow official instructions from Github Pages: [Instructions](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages)
 
 ## Credits
 
 ### Code
+
 - The code used for the multiline chart is a modified version from [Andrew Sielen’s Blog](http://bl.ocks.org/asielen/44ffca2877d0132572cb)
 
 ### Data
+
 - The data used to create this site was from:
     - [European Central Bank - Euro Reference Exchange Rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html)
     - The [Exchange Rates API](https://exchangeratesapi.io/) is a free service provided by Madis Väin under the MIT license [Github page](https://github.com/exchangeratesapi/exchangeratesapi)

@@ -19,7 +19,7 @@ let paramsHistorical = `history?start_at=${formatDate(threeYearsBack)}&end_at=${
 
 // ------------- LATEST RATES TABLE CONSTRUCTOR  ------------- //
 
-// Get lastest rates and display them as table
+// Display lastest rates as table
 function buildLatestRatesTable(dataLatest, data3DaysBack) {
     let data_table = "";                       
 
@@ -47,7 +47,7 @@ function buildLatestRatesTable(dataLatest, data3DaysBack) {
 
 //  ------------- HISTORICAL MULTILINE CHART CONSTRUCTOR  ------------- //
 
-// Get historical rates for the last 3 years and render rates in multiline chart
+// Build a multiline chart to render rates for the last 3 years
 function buildHistoricalChart(dataHistorical) {
     let dataArray = [];
     let dateParser = d3.timeParse("%Y-%m-%d");
@@ -83,6 +83,7 @@ function buildHistoricalChart(dataHistorical) {
 
 //  ------------- ASYNC API CALLS ------------- //
 
+// Calls to the API to get data for the Latest Rates Table and the Multiline chart
 async function apiCalls() {
     try {
         const dataLatest = await getData(baseURL + paramsLatest);
@@ -106,7 +107,6 @@ apiCalls();
 
 
 
-
 //  ------------- EVENT CURRENCY CONVERTER BUTTON  ------------- //
 
 // Button Event functionality to Convert Currencies
@@ -115,3 +115,4 @@ $(document).ready(function() {
         runCurrencyConverter(getData, baseURL);
     });
 });
+
