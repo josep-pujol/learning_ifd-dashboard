@@ -31,12 +31,14 @@ describe("Utils", function() {
         });
     });
     
+    
     describe("getData function", function() {
+        
         it("should exist", function() {
             expect(getData).toBeDefined();
         });
         
-        it("Call returns JSON file with keys 'base' and rates'", function() {
+        it("API call returns JSON file with keys 'base' and rates'", function() {
             var url = 'https://api.exchangeratesapi.io/latest?';
             return getData(url).then(function(data) {
                 expect(Object.keys(data).includes('base')).toBe(true);

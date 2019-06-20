@@ -81,29 +81,28 @@ function buildHistoricalChart(dataHistorical) {
 
 
 
-//  ------------- PROMISES - ASYNC API CALLS ------------- //
+//  ------------- ASYNC API CALLS ------------- //
 
-let url_params = [baseURL + paramsLatest, 
-                  baseURL + params3DaysBack, 
-                  baseURL + paramsHistorical];
-                  
-let apiCalls = url_params.map(getData); // call getData on each array element and return array of promises
-
-
-Promise.all(apiCalls).then(
-    function(urls){
-        let res = [];
+async function apiCalls() {
+    try {
+        const dataLatest = await getData(baseURL + paramsLatest);
+        const latestRates = dataLatest.rates;
         
-        for (var i=0; i<urls.length; i++){
-            res[i] = urls[i].rates;
-        }
+        const data3DaysBack = await getData(baseURL + params3DaysBack);
+        const threeDaysBackRates = data3DaysBack.rates;
         
-        buildLatestRatesTable(res[0], res[1]);
-        buildHistoricalChart(res[2]);
+        const dataHistorical = await getData(baseURL + paramsHistorical);
+        const historicalRates = dataHistorical.rates;
+                
+        buildLatestRatesTable(latestRates, threeDaysBackRates);
+        buildHistoricalChart(historicalRates);
+    } 
+    catch (err) {
+        console.log("Error fetching data: " + err);
+    }
+}
 
-    }).catch(function(urls){
-        console.log("Error fetching some data from urls: " + urls);
-    });
+apiCalls();
 
 
 
