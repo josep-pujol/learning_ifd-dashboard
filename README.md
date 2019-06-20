@@ -47,8 +47,7 @@ The site can be viewed [HERE](https://josep-pujol.github.io/learning_ifd-dashboa
 ### Wireframe
 
 I used Google sheet to create the original wireframe / mock-up. Below a screenshot of the wireframe:
-![Testing as .png](https://github.com/josep-pujol/learning_ifd-dashboard/tree/master/wireframe/wireframe_ifd-dashboard.png)
-
+![Testing as .png](https://github.com/josep-pujol/learning_ifd-dashboard/blob/master/wireframe/wireframe_ifd-dashboard.PNG)
 ## Tech Used
 
 ### Some the tech used includes:
